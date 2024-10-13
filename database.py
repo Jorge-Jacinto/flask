@@ -5,5 +5,5 @@ database = mysql.connector.connect(
     user=os.getenv('root'),
     password=os.getenv('wXNZqAGgLJvHEngOmHHWqRkYmGiNliqw'),
     database=os.getenv('railway'),
-    port=os.3306  # Puerto 3306 es por defecto
+    port=3306  # Puerto 3306 es por defecto
 )
