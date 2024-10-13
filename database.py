@@ -1,9 +1,9 @@
 import mysql.connector
 
 database = mysql.connector.connect(
-    host= 'localhost',
-    user= 'root',
-    password= 'Aguilas1804$',
-    database= 'logos_connection_db',
-    port= 3306,
+    host=os.getenv('mysql.railway.internal'),
+    user=os.getenv('root'),
+    password=os.getenv('wXNZqAGgLJvHEngOmHHWqRkYmGiNliqw'),
+    database=os.getenv('railway'),
+    port=os.3306  # Puerto 3306 es por defecto
 )
