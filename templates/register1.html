@@ -1,0 +1,105 @@
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/register.css')}}">{% endblock %}
+{% block body %}
+<div class="container">
+        <!-- Sección 1 -->
+        <div class="section active" id="section-1">
+            <h1>Pregunta 1(1/3): ¿Cuál es la finalidad de la vida?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Alcanzar la forma más elevada de conocimiento y comprensión." value='1'> 
+                Alcanzar la forma más elevada de conocimiento y comprensión.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Vivir de acuerdo con la naturaleza y la razón." value='4'> 
+                Vivir de acuerdo con la naturaleza y la razón.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Mejorar el bienestar humano y la dignidad individual." value='8'> 
+                Mejorar el bienestar humano y la dignidad individual.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Buscar el placer y evitar el dolor."value='10'> 
+                Buscar el placer y evitar el dolor.<br>
+            </label>
+            <div class="button-container">
+                <button onclick="nextSection(1, 2)">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Sección 2 -->
+        <div class="section" id="section-2">
+            <h1>Pregunta 1(2/3): ¿Cuál es la finalidad de la vida?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+
+            <label class="option">
+                <input type="radio" name="answer2" data-text="Desarrollar el potencial de cada uno mediante actividades virtuosas." value='2'> 
+                Desarrollar el potencial de cada uno mediante actividades virtuosas.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="Comprender el mundo físico e interactuar con él." value='5'> 
+                Comprender el mundo físico e interactuar con él.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="Crear el propio sentido y propósito." value='9'> 
+                Crear el propio sentido y propósito.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="La vida no tiene ningún propósito o significado inherente." value='11'> 
+                La vida no tiene ningún propósito o significado inherente.<br>
+            </label>
+
+            <div class="button-container">
+                <button onclick="prevSection(1)">Anterior</button>
+                <button onclick="nextSection(2, 3)">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Sección 3 -->
+        <div class="section" id="section-3">
+            <h1>Pregunta 1(3/3): ¿Cuál es la finalidad de la vida?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+
+            <label class="option">
+                <input type="radio" name="answer3" data-text="Realizar y manifestar el yo ideal." value='3'> 
+                Realizar y manifestar el yo ideal.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="Buscar la verdad mediante el razonamiento lógico." value='6'> 
+                Buscar la verdad mediante el razonamiento lógico.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="Adquirir conocimientos a través de la experiencia sensorial." value='7'> 
+                Vivir una vida virtuosa de acuerdo con la naturaleza.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="Vivir una vida virtuosa de acuerdo con la naturaleza." value='12'> 
+                Vivir una vida virtuosa de acuerdo con la naturaleza.<br>
+            </label>
+
+            <div class="button-container">
+                <button onclick="prevSection(2)">Anterior</button>
+                <button onclick="showResults()">Mostrar Resultados</button>
+            </div>
+        </div>
+
+        <!-- Sección de Resultados -->
+        <div class="section" id="section-results">
+            <h1>Respuestas Seleccionadas</h1>
+            <div id="results"></div>
+            
+            <h2>Selecciona tu respuesta final de las elegidas anteriormente:</h2>
+            <div id="final-selection"></div>
+    
+            <div class="button-container">
+                <button onclick="selectFinalAnswer()">Confirmar Respuesta Final</button>
+            </div>
+            
+            <div id="final-result" style="display:none;">
+                <h3>Respuesta Final Seleccionada:</h3>
+                <p id="final-answer"></p>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/register1.js') }}"></script>
+{% endblock %}

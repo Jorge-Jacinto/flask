@@ -1,0 +1,24 @@
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css')}}">{% endblock %}
+{% block body %}
+    <div class="dash_welcome">
+        <p>¡Bienvenido, {{ username }}!</p>
+    </div>
+    <div class="message_text">
+        <input type="text" id='message_text' placeholder="Escribe un mensaje a SOFIA"/>
+    </div>
+    <div>
+        <a class="logout" href="{{ url_for('logout') }}">Cerrar sesión</a>
+        <button href= 'https://www.flaticon.com/free-icons/sent" title="sent icons">Sent icons created by Febrian Hidayat - Flaticon'class='analyze_btn' id="myBtn" onclick="javascript:alert('Hello World!')">Analizar</button>
+    </div>
+
+    <script>
+    var input = document.getElementById("message_text");
+    input.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("myBtn").click();
+    }
+    });
+</script>
+{% endblock %}

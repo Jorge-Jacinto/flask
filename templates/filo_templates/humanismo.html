@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Humanismo</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="navigation">
+        <ul class="menu">
+            <li class="menu-item"><h1>El marco filosófico del Humanismo</h1></li>
+            <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+            <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+            <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+            <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+  </header>
+  
+  <main>
+    <section>
+      <br><br><h2>Sobre el Humanismo</h2>
+      <p>El Humanismo es una corriente filosófica que pone al ser humano como el centro de interés y estudio. Surgido durante el Renacimiento, el Humanismo aboga por el desarrollo integral del ser humano, resaltando la dignidad, el valor y el potencial de la persona.</p>
+      <p>Este enfoque se aleja de las interpretaciones religiosas del mundo para centrarse en el poder de la razón, el aprendizaje y la creatividad humana. El Humanismo influyó en el desarrollo del arte, la ciencia y la política durante el Renacimiento y sigue teniendo un impacto profundo en el pensamiento moderno.</p>
+    </section>
+
+    <section class="quotes">
+      <h2>Citas Famosas</h2>
+      <blockquote> "El hombre es la medida de todas las cosas." - Protágoras </blockquote>
+      <blockquote> "Nada es más admirable que el hombre, si reflexionamos en la dignidad de su espíritu y en la capacidad de sus facultades." - Giovanni Pico della Mirandola </blockquote>
+    </section>
+
+    <section>
+      <h2>Autores y Filósofos Emblemáticos</h2>
+      <p>Algunos de los filósofos y autores más destacados del Humanismo son:</p>
+      <ul>
+        <li>Dante Alighieri (1265-1321)</li>
+        <li>Erasmo de Róterdam (1466-1536)</li>
+        <li>Giovanni Pico della Mirandola (1463-1494)</li>
+        <li>Michel de Montaigne (1533-1592)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Recursos Recomendados</h2>
+      <p>Aquí tienes algunos recursos valiosos sobre el Humanismo:</p>
+      <ul>
+        <li>Libro: <a href="https://ocw.uca.es/pluginfile.php/1491/mod_resource/content/1/El_principe_Maquiavelo.pdf">El Príncipe</a> - Nicolás Maquiavelo</li>
+        <li>Libro: <a href="https://www.philosophia.cl/biblioteca/erasmo/Elogio%20de%20la%20locura.pdf">Elogio de la locura</a> - Erasmo de Róterdam</li>
+        <li>Libro: <a href="https://archivos.juridicas.unam.mx/www/bjv/libros/10/4970/13.pdf">Discurso sobre la dignidad del hombre</a> - Pico della Mirandola</li>
+      </ul>
+    </section>
+
+    <section class="word-search">
+        <h2>Sopa de letras: Filosofía Humanista</h2>
+        <p>Encuentra las siguientes palabras relacionadas con el Humanismo:</p>
+        <ul id="word-list">
+            <li>DIGNIDAD</li>
+            <li>RAZÓN</li>
+            <li>HUMANO</li>
+            <li>ERASMO</li>
+            <li>PRINCIPE</li>
+        </ul>
+        <div id="word-grid"></div>
+        <p id="status"></p>
+    </section>
+    
+    <script>
+        const words = ["DIGNIDAD", "RAZON", "HUMANO", "ERASMO", "PRINCIPE"]; //LISTO
+        const gridSize = 10;
+        let selectedCells = [];
+        let foundWords = [];
+    
+        const wordGrid = document.getElementById('word-grid');
+        const status = document.getElementById('status');
+    
+        const grid = [
+            ['D', 'I', 'G', 'N', 'I', 'D', 'A', 'D', 'B', 'I'],
+            ['R', 'A', 'S', 'O', 'N', 'E', 'Z', 'B', 'C', 'N'],
+            ['H', 'U', 'M', 'A', 'N', 'I', 'D', 'Q', 'R', 'F'],
+            ['C', 'P', 'R', 'I', 'N', 'C', 'I', 'P', 'E', 'I'],
+            ['T', 'O', 'U', 'S', 'A', 'M', 'A', 'B', 'C', 'E'],
+            ['U', 'M', 'M', 'D', 'L', 'G', 'H', 'I', 'E', 'R'],
+            ['H', 'I', 'E', 'R', 'A', 'S', 'M', 'O', 'O', 'N'],
+            ['G', 'H', 'A', 'B', 'U', 'S', 'L', 'A', 'V', 'O'],
+            ['H', 'M', 'A', 'N', 'U', 'C', 'A', 'L', 'T', 'J'],
+            ['F', 'O', 'N', 'A', 'M', 'U', 'H', 'S', 'V', 'Z']
+        ];
+    
+        // Función para crear la cuadrícula
+        function createGrid() {
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    const cell = document.createElement('div');
+                    cell.textContent = grid[i][j];
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    cell.addEventListener('click', selectCell);
+                    wordGrid.appendChild(cell);
+                }
+            }
+        }
+    
+        // Función para seleccionar una celda
+        function selectCell() {
+            const row = this.dataset.row;
+            const col = this.dataset.col;
+    
+            if (this.classList.contains('selected')) {
+                this.classList.remove('selected');
+                selectedCells = selectedCells.filter(cell => cell !== `${row},${col}`);
+            } else {
+                this.classList.add('selected');
+                selectedCells.push(`${row},${col}`);
+            }
+    
+            checkWord();
+        }
+    
+        // Función para comprobar si se ha encontrado una palabra
+        function checkWord() {
+            let selectedWord = selectedCells.map(cell => {
+                const [row, col] = cell.split(',');
+                return grid[row][col];
+            }).join('');
+    
+            if (words.includes(selectedWord)) {
+                foundWords.push(selectedWord);
+                selectedCells.forEach(cell => {
+                    const [row, col] = cell.split(',');
+                    const gridCell = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+                    gridCell.classList.add('found');
+                });
+    
+                selectedCells = [];
+                status.textContent = `¡Encontraste la palabra: ${selectedWord}!`;
+                if (foundWords.length === words.length) {
+                    status.textContent = "¡Felicidades! Has encontrado todas las palabras.";
+                }
+            }
+        }
+    
+        createGrid();
+    </script>
+    
+  </main>
+</body>
+</html>

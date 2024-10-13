@@ -1,0 +1,105 @@
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/register.css')}}">{% endblock %}
+{% block body %}
+<div class="container">
+        <!-- Sección 1 -->
+        <div class="section active" id="section-1">
+            <h1>Pregunta 3(1/3): ¿Cómo describirías la relación entre mente y cuerpo?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="La mente está conectada a un reino superior y el cuerpo es solo un recipiente temporal." value='1'> 
+                La mente está conectada a un reino superior y el cuerpo es solo un recipiente temporal.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="La mente gobierna el cuerpo, para mantener un control racional sobre cualquier situación." value='4'> 
+                La mente gobierna el cuerpo, para mantener un control racional sobre cualquier situación.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="La dualidad es necesaria para poder funcionar correctamente en sociedades." value='8'> 
+                La dualidad es necesaria para poder funcionar correctamente en sociedades.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="La mente interpreta las experiencias físicas de la satisfacción y gratificación." value='10'> 
+                La mente interpreta las experiencias físicas de la satisfacción y gratificación.<br>
+            </label>
+            <div class="button-container">
+                <button onclick="nextSection(1, 2)">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Sección 2 -->
+        <div class="section" id="section-2">
+            <h1>Pregunta 3(2/3): ¿Cómo describirías la relación entre mente y cuerpo?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+
+            <label class="option">
+                <input type="radio" name="answer2" data-text="La conexión entre la forma y la materia con el propósito de alcanzar su potencial." value='2'> 
+                La conexión entre la forma y la materia con el propósito de alcanzar su potencial.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="Ambos son reales, el cuerpo proporciona los datos y la mente los interpreta." value='5'> 
+                Ambos son reales, el cuerpo proporciona los datos y la mente los interpreta.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="La mente da sentido a las experiencias del cuerpo." value='9'> 
+                La mente da sentido a las experiencias del cuerpo.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="El cuerpo y la mente son exagerados en su utilidad, y solo son meras incertidumbres." value='11'> 
+                El cuerpo y la mente son exagerados en su utilidad, y solo son meras incertidumbres.<br>
+            </label>
+
+            <div class="button-container">
+                <button onclick="prevSection(1)">Anterior</button>
+                <button onclick="nextSection(2, 3)">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Sección 3 -->
+        <div class="section" id="section-3">
+            <h1>Pregunta 3(3/3): ¿Cómo describirías la relación entre mente y cuerpo?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+
+            <label class="option">
+                <input type="radio" name="answer3" data-text="La mente tiene primacía sobre el cuerpo, para dar forma a la realidad." value='3'> 
+                La mente tiene primacía sobre el cuerpo, para dar forma a la realidad.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="La mente opera independientemente del cuerpo, utilizando la razón para trascender las limitaciones físicas." value='6'> 
+                La mente opera independientemente del cuerpo, utilizando la razón para trascender las limitaciones físicas.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="El uno depende del otro para poder dar sentido a las experiencias vividas." value='7'> 
+                El uno depende del otro para poder dar sentido a las experiencias vividas.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="El cuerpo es una herramienta de la mente para el propósito de tener una vida simple." value='12'> 
+                El cuerpo es una herramienta de la mente para el propósito de tener una vida simple.<br>
+            </label>
+
+            <div class="button-container">
+                <button onclick="prevSection(2)">Anterior</button>
+                <button onclick="showResults()">Mostrar Resultados</button>
+            </div>
+        </div>
+
+        <!-- Sección de Resultados -->
+        <div class="section" id="section-results">
+            <h1>Respuestas Seleccionadas</h1>
+            <div id="results"></div>
+            
+            <h2>Selecciona tu respuesta final de las elegidas anteriormente:</h2>
+            <div id="final-selection"></div>
+    
+            <div class="button-container">
+                <button onclick="selectFinalAnswer()">Confirmar Respuesta Final</button>
+            </div>
+            
+            <div id="final-result" style="display:none;">
+                <h3>Respuesta Final Seleccionada:</h3>
+                <p id="final-answer"></p>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/register3.js') }}"></script>
+{% endblock %}

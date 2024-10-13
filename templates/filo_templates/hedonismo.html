@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hedonismo</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="navigation">
+        <ul class="menu">
+            <li class="menu-item"><h1>El marco filosófico del Hedonismo</h1></li>
+            <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+            <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+            <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+            <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+  </header>
+  
+  <main>
+    <section>
+      <br><br><h2>Sobre el Hedonismo</h2>
+      <p>El Hedonismo es una escuela filosófica que sostiene que el placer es el bien supremo y objetivo final de la vida. De acuerdo con esta doctrina, el propósito de la vida humana es maximizar el placer y minimizar el sufrimiento.</p>
+      <p>Fundado en la antigua Grecia, el Hedonismo ha tenido múltiples variantes, desde el Hedonismo psicológico, que ve el placer como la motivación principal del ser humano, hasta el Hedonismo ético, que lo propone como guía moral para nuestras acciones.</p>
+    </section>
+
+    <section class="quotes">
+      <h2>Citas Famosas</h2>
+      <blockquote> "El placer es el principio y el fin de la vida feliz." - Epicuro</blockquote>
+      <blockquote> "No se debe exagerar la búsqueda del placer, pues más vale la moderación." - Aristipo</blockquote>
+    </section>
+
+    <section>
+      <h2>Autores y Filósofos Emblemáticos</h2>
+      <p>Algunos de los filósofos más destacados del Hedonismo son:</p>
+      <ul>
+        <li>Epicuro (341-270 a.C.)</li>
+        <li>Aristipo de Cirene (435-356 a.C.)</li>
+        <li>Lucrecio (99-55 a.C.)</li>
+        <li>Jeremy Bentham (1748-1832)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Recursos Recomendados</h2>
+      <p>Aquí tienes algunos recursos valiosos sobre el Hedonismo:</p>
+      <ul>
+        <li>Libro: <a href="https://dialnet.unirioja.es/descarga/articulo/6471616.pdf">Cartas a Meneceo</a> - Epicuro</li>
+        <li>Libro: <a href="https://biblioteca.org.ar/libros/89401.pdf">De la naturaleza de las cosas</a> - Lucrecio</li>
+      </ul>
+    </section>
+
+    <section class="word-search">
+        <h2>Sopa de letras: Filosofía Hedonista</h2>
+        <p>Encuentra las siguientes palabras relacionadas con el Hedonismo:</p>
+        <ul id="word-list">
+            <li>PLACER</li>
+            <li>EPICURO</li>
+            <li>FELICIDAD</li>
+            <li>DESEO</li>
+            <li>ARISTIPO</li>
+        </ul>
+        <div id="word-grid"></div>
+        <p id="status"></p>
+    </section>
+
+    <script>
+        const words = ["PLACER", "EPICURO", "FELICIDAD", "DESEO", "ARISTIPO"]; //LISTO
+        const gridSize = 10;
+        let selectedCells = [];
+        let foundWords = [];
+    
+        const wordGrid = document.getElementById('word-grid');
+        const status = document.getElementById('status');
+    
+        const grid = [
+            ['P', 'L', 'A', 'C', 'E', 'R', 'B', 'C', 'D', 'A'],
+            ['E', 'P', 'I', 'C', 'U', 'R', 'O', 'F', 'G', 'R'],
+            ['F', 'E', 'L', 'I', 'C', 'I', 'D', 'A', 'D', 'I'],
+            ['M', 'O', 'D', 'E', 'R', 'A', 'C', 'I', 'O', 'S'],
+            ['A', 'R', 'I', 'S', 'T', 'I', 'P', 'O', 'L', 'T'],
+            ['O', 'B', 'C', 'D', 'O', 'F', 'G', 'H', 'I', 'I'],
+            ['A', 'F', 'E', 'E', 'I', 'C', 'I', 'D', 'A', 'P'],
+            ['L', 'A', 'S', 'O', 'D', 'E', 'R', 'A', 'C', 'O'],
+            ['I', 'E', 'I', 'S', 'T', 'I', 'P', 'O', 'L', 'O'],
+            ['D', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+        ];
+    
+        // Función para crear la cuadrícula
+        function createGrid() {
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    const cell = document.createElement('div');
+                    cell.textContent = grid[i][j];
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    cell.addEventListener('click', selectCell);
+                    wordGrid.appendChild(cell);
+                }
+            }
+        }
+    
+        // Función para seleccionar una celda
+        function selectCell() {
+            const row = this.dataset.row;
+            const col = this.dataset.col;
+            const letter = grid[row][col];
+    
+            if (this.classList.contains('selected')) {
+                this.classList.remove('selected');
+                selectedCells = selectedCells.filter(cell => cell !== `${row},${col}`);
+            } else {
+                this.classList.add('selected');
+                selectedCells.push(`${row},${col}`);
+            }
+    
+            checkWord();
+        }
+    
+        // Función para comprobar si se ha encontrado una palabra
+        function checkWord() {
+            let selectedWord = selectedCells.map(cell => {
+                const [row, col] = cell.split(',');
+                return grid[row][col];
+            }).join('');
+    
+            if (words.includes(selectedWord)) {
+                foundWords.push(selectedWord);
+                selectedCells.forEach(cell => {
+                    const [row, col] = cell.split(',');
+                    const gridCell = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+                    gridCell.classList.add('found');
+                });
+    
+                selectedCells = [];
+                status.textContent = `¡Encontraste la palabra: ${selectedWord}!`;
+                if (foundWords.length === words.length) {
+                    status.textContent = "¡Felicidades! Has encontrado todas las palabras.";
+                }
+            }
+        }
+    
+        createGrid();
+    </script>
+
+  </main>
+</body>
+</html>

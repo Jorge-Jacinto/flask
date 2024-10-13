@@ -1,0 +1,105 @@
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/register.css')}}">{% endblock %}
+{% block body %}
+<div class="container">
+        <!-- Sección 1 -->
+        <div class="section active" id="section-1">
+            <h1>Pregunta 4(1/3): ¿Cuál crees que es la finalidad superior de la existencia humana?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Está orientada a realizar y comprender las verdades que se encuentran más allá del mundo material." value='1'> 
+                Está orientada a realizar y comprender las verdades que se encuentran más allá del mundo material.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text=" Es vivir de acuerdo con la naturaleza y la razón, aceptando lo que no podemos cambiar" value='4'> 
+                Es vivir de acuerdo con la naturaleza y la razón, aceptando lo que no podemos cambiar<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="El propósito se encuentra en la mejora del bienestar humano, y la contribución al bien mayor de la sociedad." value='8'> 
+                El propósito se encuentra en la mejora del bienestar humano, y la contribución al bien mayor de la sociedad.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="La búsqueda de una vida llena de satisfacción."value='10'> 
+                La búsqueda de una vida llena de satisfacción.<br>
+            </label>
+            <div class="button-container">
+                <button onclick="nextSection(1, 2)">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Sección 2 -->
+        <div class="section" id="section-2">
+            <h1>Pregunta 4(2/3): ¿Cuál crees que es la finalidad superior de la existencia humana?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+
+            <label class="option">
+                <input type="radio" name="answer2" data-text="Es alcanzar un estado de virtud y justicia." value='2'> 
+                Es alcanzar un estado de virtud y justicia.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="El propósito se encuentra en la comprensión con las realidades objetivas del mundo." value='5'> 
+                El propósito se encuentra en la comprensión con las realidades objetivas del mundo.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="El propósito lo crea cada individuo a través de sus elecciones, acciones y vida auténtica." value='9'> 
+                El propósito lo crea cada individuo a través de sus elecciones, acciones y vida auténtica.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="La existencia humana carece de propósito inherente, y cualquier significado lo construyen los propios individuos." value='11'> 
+                La existencia humana carece de propósito inherente, y cualquier significado lo construyen los propios individuos.<br>
+            </label>
+
+            <div class="button-container">
+                <button onclick="prevSection(1)">Anterior</button>
+                <button onclick="nextSection(2, 3)">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Sección 3 -->
+        <div class="section" id="section-3">
+            <h1>Pregunta 4(3/3): ¿Cuál crees que es la finalidad superior de la existencia humana?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+
+            <label class="option">
+                <input type="radio" name="answer3" data-text="Está en la búsqueda y realización de ideales superiores y en el perfeccionamiento de nuestro yo interior." value='3'> 
+                Está en la búsqueda y realización de ideales superiores y en el perfeccionamiento de nuestro yo interior.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="Buscar y comprender la verdad mediante el uso de la razón y el intelecto." value='6'> 
+                Buscar y comprender la verdad mediante el uso de la razón y el intelecto.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="Aprender y comprender a base de experiencias e interacciones con el mundo." value='7'> 
+                Aprender y comprender a base de experiencias e interacciones con el mundo.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="El verdadero propósito se encuentra rechazando las convenciones sociales y vivir en armonía con la naturaleza." value='12'> 
+                El verdadero propósito se encuentra rechazando las convenciones sociales y vivir en armonía con la naturaleza.<br>
+            </label>
+
+            <div class="button-container">
+                <button onclick="prevSection(2)">Anterior</button>
+                <button onclick="showResults()">Mostrar Resultados</button>
+            </div>
+        </div>
+
+        <!-- Sección de Resultados -->
+        <div class="section" id="section-results">
+            <h1>Respuestas Seleccionadas</h1>
+            <div id="results"></div>
+            
+            <h2>Selecciona tu respuesta final de las elegidas anteriormente:</h2>
+            <div id="final-selection"></div>
+    
+            <div class="button-container">
+                <button onclick="selectFinalAnswer()">Confirmar Respuesta Final</button>
+            </div>
+            
+            <div id="final-result" style="display:none;">
+                <h3>Respuesta Final Seleccionada:</h3>
+                <p id="final-answer"></p>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/register4.js') }}"></script>
+{% endblock %}

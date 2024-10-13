@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estoicismo</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="navigation">
+        <ul class="menu">
+            <li class="menu-item"><h1>El marco filosófico del Estoicismo</h1></li>
+            <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+            <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+            <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+            <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+  </header>
+  
+  <main>
+    <section>
+      <br><br><h2>Sobre el Estoicismo</h2>
+      <p>El Estoicismo es una escuela filosófica que surgió en la Antigua Grecia alrededor del siglo III a.C. Su objetivo principal es alcanzar la felicidad y la tranquilidad emocional a través del autocontrol, la fortaleza de carácter y la aceptación de los eventos tal como ocurren, sin ser perturbados por las emociones.</p>
+      <p>Para los estoicos, el bien más elevado es la virtud, y todo lo demás, como la riqueza o la salud, son indiferentes. Los filósofos estoicos creen que la razón y la naturaleza deben guiar nuestras acciones, y enseñan a aceptar lo que no podemos cambiar.</p>
+    </section>
+
+    <section class="quotes">
+      <h2>Citas Famosas</h2>
+      <blockquote> "No es lo que te sucede, sino cómo reaccionas a ello lo que importa." - Epicteto </blockquote>
+      <blockquote> "La felicidad de tu vida depende de la calidad de tus pensamientos." - Marco Aurelio </blockquote>
+    </section>
+
+    <section>
+      <h2>Autores y Filósofos Emblemáticos</h2>
+      <p>Algunos de los filósofos más destacados de la escuela estoica son:</p>
+      <ul>
+        <li>Zenón de Citio (334-262 a.C.)</li>
+        <li>Epicteto (55-135 d.C.)</li>
+        <li>Marco Aurelio (121-180 d.C.)</li>
+        <li>Lucio Anneo Séneca (4 a.C. - 65 d.C.)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Recursos Recomendados</h2>
+      <p>Aquí tienes algunos recursos valiosos sobre el Estoicismo:</p>
+      <ul>
+        <li>Libro: <a href="https://web.seducoahuila.gob.mx/biblioweb/upload/Marco%20Aurelio-Meditaciones.pdf">Meditaciones</a> - Marco Aurelio</li>
+        <li>Libro: <a href="https://www.sura.com/arteycultura/wp-content/uploads/2023/03/sura-habitar-virtud-libro-seneca-digital.pdf">Cartas a Lucilio</a> - Séneca</li>
+        <li>Libro: <a href="https://www.nueva-acropolis.es/filiales/libros/Epicteto-Maximas.pdf">Enquiridion</a> - Epicteto</li>
+      </ul>
+    </section>
+
+    <section class="word-search">
+        <h2>Sopa de letras: Filosofía Estoica</h2>
+        <p>Encuentra las siguientes palabras relacionadas con el estoicismo:</p>
+        <ul id="word-list">
+            <li>ZENON</li>
+            <li>EPICTETO</li>
+            <li>VIRTUD</li>
+            <li>NATURALEZA</li>
+            <li>SERENIDAD</li>
+        </ul>
+        <div id="word-grid"></div>
+        <p id="status"></p>
+    </section>
+    
+    <script>
+        const words = ["ZENON", "EPICTETO", "VIRTUD", "NATURALEZA", "SERENIDAD"]; // LISTO
+        const gridSize = 10;
+        let selectedCells = [];
+        let foundWords = [];
+    
+        const wordGrid = document.getElementById('word-grid');
+        const status = document.getElementById('status');
+    
+        const grid = [
+            ['N', 'A', 'T', 'U', 'R', 'A', 'L', 'E', 'Z', 'A'],
+            ['E', 'P', 'I', 'C', 'T', 'T', 'T', 'O', 'D', 'M'],
+            ['V', 'I', 'R', 'T', 'U', 'D', 'F', 'A', 'I', 'L'],
+            ['N', 'A', 'T', 'U', 'R', 'A', 'D', 'E', 'Z', 'A'],
+            ['T', 'R', 'A', 'N', 'Q', 'I', 'I', 'L', 'I', 'D'],
+            ['L', 'A', 'L', 'E', 'N', 'A', 'S', 'S', 'P', 'N'],
+            ['C', 'U', 'I', 'E', 'N', 'A', 'T', 'V', 'X', 'O'],
+            ['O', 'P', 'R', 'S', 'L', 'O', 'E', 'T', 'Y', 'N'],
+            ['M', 'E', 'L', 'E', 'B', 'Q', 'Z', 'T', 'P', 'E'],
+            ['S', 'W', 'N', 'A', 'T', 'U', 'E', 'S', 'R', 'Z']
+        ];
+    
+        
+        function createGrid() {
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    const cell = document.createElement('div');
+                    cell.textContent = grid[i][j];
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    cell.addEventListener('click', selectCell);
+                    wordGrid.appendChild(cell);
+                }
+            }
+        }
+    
+        
+        function selectCell() {
+            const row = this.dataset.row;
+            const col = this.dataset.col;
+            const letter = grid[row][col];
+    
+            if (this.classList.contains('selected')) {
+                this.classList.remove('selected');
+                selectedCells = selectedCells.filter(cell => cell !== `${row},${col}`);
+            } else {
+                this.classList.add('selected');
+                selectedCells.push(`${row},${col}`);
+            }
+    
+            checkWord();
+        }
+    
+        
+        function checkWord() {
+            let selectedWord = selectedCells.map(cell => {
+                const [row, col] = cell.split(',');
+                return grid[row][col];
+            }).join('');
+    
+            if (words.includes(selectedWord)) {
+                foundWords.push(selectedWord);
+                selectedCells.forEach(cell => {
+                    const [row, col] = cell.split(',');
+                    const gridCell = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+                    gridCell.classList.add('found');
+                });
+    
+                selectedCells = [];
+                status.textContent = `¡Encontraste la palabra: ${selectedWord}!`;
+                if (foundWords.length === words.length) {
+                    status.textContent = "¡Felicidades! Has encontrado todas las palabras.";
+                }
+            }
+        }
+    
+        createGrid();
+    </script>
+    
+  </main>
+</body>
+</html>

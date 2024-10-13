@@ -1,0 +1,86 @@
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}">{% endblock %}
+{% block body %}
+    <div class="login-form" id="LoginForm">
+        <div class="login-form-inner">
+            <div class="login-form-front">
+                <form method="post" action="">
+                    <div class="header">
+                        <h1>¡Bienvenido a LogosConnection!</h1>
+                    </div>
+                    <div class="input-box">
+                        <input id='username' name='username' type="text" required>
+                        <label ><i class="fa-solid fa-user"></i> Usuario</label>
+                    </div>
+                    <div class="input-box">
+                        <input id='password' name='password' type="password" required>
+                        <label ><i class="fa-solid fa-lock"></i> Contraseña</label>
+                    </div>
+                    <div class="input-box">
+                        <a href="#"> ¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" value="Login" required>
+                    </div> 
+                    <div class="signup-link">
+                        <p>¿No tienes una cuenta? <a href="#" onclick="flipForm()">Registrate</a> </p>
+                    </div>
+                    <div class="message">
+                        {% with messages = get_flashed_messages()%}
+                            {% if messages %}
+                                <ul>
+                                    {% for message in messages %}
+                                        <li> {{ message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        {% endwith%}
+                    </div>
+                </form>
+            </div>
+            <div class="register-form">
+                <form method="post" action="">
+                    <div class="header">
+                        <h1>¡Registra un Usuario!</h1>
+                    </div>
+                    <div class="input-box">
+                        <input id='name' name='name' type="text" required>
+                        <label ><i class="fa-solid fa-user"> Nombres(s)</i></label>
+                    </div>
+                    <div class="input-box">
+                        <input id='second_name' name='second_name' type="text" required>
+                        <label ><i class="fa-solid fa-user"></i> Apellidos</label>
+                    </div>
+                    <div class="input-box">
+                        <input id='user' name='username' type="text" required>
+                        <label ><i class="fa-solid fa-user"> Usuario</i></label>
+                    </div>
+                    <div class="input-box">
+                        <input id='password' name='password' type="password" required>
+                        <label ><i class="fa-solid fa-lock"></i> Contraseña</label>
+                    </div>
+                    <div class="input-box">
+                        <input id='password' name='password' type="password" required>
+                        <label ><i class="fa-solid fa-lock"></i> Confirmar Contraseña</label>
+                    </div>
+                    <div class="input-box">
+                        <a href="#"> ¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" value="Continuar" required>
+                    </div> 
+                    <div class="login-link">
+                        <p>¿Ya tienes una cuenta? <a href="#" onclick="flipForm()">Login</a> </p>
+                    </div>
+                </form>
+            </div>                
+        </div>
+    </div>
+    
+    <script>
+        function flipForm(){
+            var form = document.getElementById('LoginForm');
+            form.classList.toggle('flipped');
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css')}}">{% endblock %}
+{% block body %}
+<div class="start_button">
+    <p>Una forma inteligente de aprender de la
+        filosofía
+    </p>
+    <button class="btn" onclick="window.location.href='login'">Aprender</button>
+</div>
+{% endblock %}

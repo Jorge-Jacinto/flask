@@ -1,0 +1,106 @@
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/register.css')}}">{% endblock %}
+{% block body %}
+
+<div class="container">
+    <!-- Sección 1 -->
+    <div class="section active" id="section-1">
+        <h1>Pregunta 2(1/3): ¿Cuál de las siguientes sentencias es más cercana para ti sobre la moral?</h1>
+        <p>¿Cuál es tu respuesta a esta pregunta?</p>
+        <label class="option">
+            <input type="radio" name="answer1" data-text="Se basa en principios inmutables que van más allá de la percepción humana." value='1'> 
+            Se basa en principios inmutables que van más allá de la percepción humana.<br>
+        </label>
+        <label class="option">
+            <input type="radio" name="answer1" data-text="Vivir y obrar conforme a la razón y la naturaleza." value='4'> 
+            Vivir y obrar conforme a la razón y la naturaleza.<br>
+        </label>
+        <label class="option">
+            <input type="radio" name="answer1" data-text="Capacidad de obrar con bien hacía con los otros." value='8'> 
+            Capacidad de obrar con bien hacía con los otros.<br>
+        </label>
+        <label class="option">
+            <input type="radio" name="answer1" data-text="Aquel valor que resalta la satisfacción personal."value='10'> 
+            Aquel valor que resalta la satisfacción personal.<br>
+        </label>
+        <div class="button-container">
+            <button onclick="nextSection(1, 2)">Siguiente</button>
+        </div>
+    </div>
+
+    <!-- Sección 2 -->
+    <div class="section" id="section-2">
+        <h1>Pregunta 2(2/3): Cuál de las siguientes sentencias es más cercana para ti sobre la moral?</h1>
+        <p>¿Cuál es tu respuesta a esta pregunta?</p>
+
+        <label class="option">
+            <input type="radio" name="answer2" data-text="Consiste en la virtud de la justicia." value='2'> 
+            Consiste en la virtud de la justicia.<br>
+        </label>
+        <label class="option">
+            <input type="radio" name="answer2" data-text="Todo es verdadero o falso en virtud de la verdad del hecho." value='5'> 
+            Todo es verdadero o falso en virtud de la verdad del hecho.<br>
+        </label>
+        <label class="option">
+            <input type="radio" name="answer2" data-text="Valores de libre elección que guían al ser humano en la sociedad." value='9'> 
+            Valores de libre elección que guían al ser humano en la sociedad.<br>
+        </label>
+        <label class="option">
+            <input type="radio" name="answer2" data-text="No importa. No hay nada bueno ni malo." value='11'> 
+            No importa. No hay nada bueno ni malo.<br>
+        </label>
+
+        <div class="button-container">
+            <button onclick="prevSection(1)">Anterior</button>
+            <button onclick="nextSection(2, 3)">Siguiente</button>
+        </div>
+    </div>
+
+    <!-- Sección 3 -->
+    <div class="section" id="section-3">
+        <h1>Pregunta 2(3/3): Cuál de las siguientes sentencias es más cercana para ti sobre la moral?</h1>
+        <p>¿Cuál es tu respuesta a esta pregunta?</p>
+
+        <label class="option">
+            <input type="radio" name="answer3" data-text="Una confianza exagerada entre lo bueno y lo justo." value='3'> 
+            Una confianza exagerada entre lo bueno y lo justo.<br>
+        </label>
+        <label class="option">
+            <input type="radio" name="answer3" data-text="La moral es el resultado del razonamiento." value='6'> 
+            La moral es el resultado del razonamiento.<br>
+        </label>
+        <label class="option">
+            <input type="radio" name="answer3" data-text="Un valor validado por la experiencia previa." value='7'> 
+            Un valor validado por la experiencia previa.<br>
+        </label>
+        <label class="option">
+            <input type="radio" name="answer3" data-text="Las normas éticas de la moral son cuestionables." value='12'> 
+            Las normas éticas de la moral son cuestionables.<br>
+        </label>
+
+        <div class="button-container">
+            <button onclick="prevSection(2)">Anterior</button>
+            <button onclick="showResults()">Mostrar Resultados</button>
+        </div>
+    </div>
+
+    <!-- Sección de Resultados -->
+    <div class="section" id="section-results">
+        <h1>Respuestas Seleccionadas</h1>
+        <div id="results"></div>
+        
+        <h2>Selecciona tu respuesta final de las elegidas anteriormente:</h2>
+        <div id="final-selection"></div>
+
+        <div class="button-container">
+            <button onclick="selectFinalAnswer()">Confirmar Respuesta Final</button>
+        </div>
+        
+        <div id="final-result" style="display:none;">
+            <h3>Respuesta Final Seleccionada:</h3>
+            <p id="final-answer"></p>
+        </div>
+    </div>
+</div>
+    <script src="{{ url_for('static', filename='js/register2.js') }}"></script>
+{% endblock %}

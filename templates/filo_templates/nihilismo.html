@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nihilismo</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="navigation">
+        <ul class="menu">
+            <li class="menu-item"><h1>El marco filosófico del Nihilismo</h1></li>
+            <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+            <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+            <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+            <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+  </header>
+  
+  <main>
+    <section>
+      <br><br><h2>Sobre el Nihilismo</h2>
+      <p>El Nihilismo es una doctrina filosófica que sostiene que la vida no tiene sentido o valor intrínseco. En su forma más radical, el Nihilismo afirma que todas las creencias, valores y objetivos son esencialmente infundados y carecen de significado objetivo.</p>
+      <p>El Nihilismo se asocia comúnmente con la negación de estructuras religiosas y morales, argumentando que no hay propósito universal ni autoridad moral objetiva en el mundo.</p>
+    </section>
+
+    <section class="quotes">
+      <h2>Citas Famosas</h2>
+      <blockquote> "Dios ha muerto. Dios sigue muerto. Y nosotros lo hemos matado." - Friedrich Nietzsche</blockquote>
+      <blockquote> "La vida no tiene el menor sentido, porque la vida es absurda." - Albert Camus</blockquote>
+    </section>
+
+    <section>
+      <h2>Autores y Filósofos Emblemáticos</h2>
+      <p>Algunos de los filósofos más representativos del Nihilismo son:</p>
+      <ul>
+        <li>Friedrich Nietzsche (1844-1900)</li>
+        <li>Albert Camus (1913-1960)</li>
+        <li>Ivan Turgenev (1818-1883)</li>
+        <li>Jean-Paul Sartre (1905-1980)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Recursos Recomendados</h2>
+      <p>Aquí tienes algunos recursos valiosos sobre el Nihilismo:</p>
+      <ul>
+        <li>Libro: <a href="https://www.argentina.gob.ar/sites/default/files/asi_hablo_zaratustra_nietzsche.pdf">Así habló Zaratustra</a> - Friedrich Nietzsche</li>
+        <li>Libro: <a href="https://dn790006.ca.archive.org/0/items/albert-camus-el-mito-de-sisifo/Albert%20Camus%20-%20El%20mito%20de%20S%C3%ADsifo.pdf">El mito de Sísifo</a> - Albert Camus</li>
+      </ul>
+    </section>
+
+    <section class="word-search">
+        <h2>Sopa de letras: Filosofía Nihilista</h2>
+        <p>Encuentra las siguientes palabras relacionadas con el Nihilismo:</p>
+        <ul id="word-list">
+            <li>NIHILISMO</li>
+            <li>CAMUS</li>
+            <li>ABSURDO</li>
+            <li>VALOR</li>
+            <li>NEGAR</li>
+        </ul>
+        <div id="word-grid"></div>
+        <p id="status"></p>
+    </section>
+
+    <script>
+        const words = ["NIHILISMO", "CAMUS", "ABSURDO", "VALOR", "NEGAR"]; //LISTO
+        const gridSize = 10;
+        let selectedCells = [];
+        let foundWords = [];
+    
+        const wordGrid = document.getElementById('word-grid');
+        const status = document.getElementById('status');
+    
+        const grid = [
+            ['N', 'I', 'H', 'I', 'L', 'I', 'S', 'M', 'O', 'c'],
+            ['A', 'B', 'S', 'U', 'R', 'D', 'O', 'G', 'A', 'I'],
+            ['C', 'A', 'M', 'U', 'S', 'J', 'K', 'M', 'M', 'N'],
+            ['V', 'A', 'L', 'O', 'R', 'P', 'U', 'R', 'S', 'T'],
+            ['N', 'A', 'G', 'A', 'V', 'S', 'X', 'Y', 'Z', 'B'],
+            ['I', 'L', 'L', 'S', 'M', 'A', 'B', 'C', 'D', 'E'],
+            ['N', 'E', 'G', 'O', 'V', 'W', 'X', 'Y', 'Z', 'B'],
+            ['I', 'L', 'I', 'S', 'R', 'A', 'B', 'C', 'D', 'E'],
+            ['I', 'L', 'I', 'S', 'M', 'O', 'B', 'C', 'D', 'E'],
+            ['O', 'P', 'Q', 'N', 'E', 'G', 'A', 'R', 'W', 'X']
+        ];
+    
+        // Función para crear la cuadrícula
+        function createGrid() {
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    const cell = document.createElement('div');
+                    cell.textContent = grid[i][j];
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    cell.addEventListener('click', selectCell);
+                    wordGrid.appendChild(cell);
+                }
+            }
+        }
+    
+        // Función para seleccionar una celda
+        function selectCell() {
+            const row = this.dataset.row;
+            const col = this.dataset.col;
+            const letter = grid[row][col];
+    
+            if (this.classList.contains('selected')) {
+                this.classList.remove('selected');
+                selectedCells = selectedCells.filter(cell => cell !== `${row},${col}`);
+            } else {
+                this.classList.add('selected');
+                selectedCells.push(`${row},${col}`);
+            }
+    
+            checkWord();
+        }
+    
+        // Función para comprobar si se ha encontrado una palabra
+        function checkWord() {
+            let selectedWord = selectedCells.map(cell => {
+                const [row, col] = cell.split(',');
+                return grid[row][col];
+            }).join('');
+    
+            if (words.includes(selectedWord)) {
+                foundWords.push(selectedWord);
+                selectedCells.forEach(cell => {
+                    const [row, col] = cell.split(',');
+                    const gridCell = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+                    gridCell.classList.add('found');
+                });
+    
+                selectedCells = [];
+                status.textContent = `¡Encontraste la palabra: ${selectedWord}!`;
+                if (foundWords.length === words.length) {
+                    status.textContent = "¡Felicidades! Has encontrado todas las palabras.";
+                }
+            }
+        }
+    
+        createGrid();
+    </script>
+
+  </main>
+</body>
+</html>

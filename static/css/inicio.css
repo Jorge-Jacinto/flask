@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    font-family:"Poppins", sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background: #8f5632;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 0 100px;
+}
+
+header .navigation {
+    position: relative;
+    line-height: 50px;
+}
+
+header .navigation .menu {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    user-select: none;
+}
+
+.menu-item > a {
+    color: #F7EACC;
+    font-size: 1em;
+    text-decoration: none;
+    margin: 20px;
+    padding: 25px 0;
+}
+
+.menu-item > a:hover {
+    color: #fff;
+    transition: 0.3s;
+} 
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('../images/background_forum.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+    flex-direction: column;
+}
+
+/* Estilo del botón de logout */
+.logout {
+    width: 200px;
+    height: 50px;
+    text-decoration: none;
+    padding: 10px;
+    background: #8f5632;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 600;
+    opacity: 0.8;
+    margin-top: 20px;
+}
+
+.logout:hover {
+    background: #fff;
+    color: #333;
+}
+
+/* Estilo del perfil de usuario */
+.user-profile {
+    flex: 1;
+    padding: 20px;
+    background: #f7f7f7;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.user-profile h1 {
+    text-align: center;
+    color: #8f5632;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.profile-card {
+    padding: 20px;
+    text-align: center;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+}
+
+.profile-card h2 {
+    color: #8f5632;
+    font-size: 1.5em;
+}
+
+.profile-card p {
+    color: #333;
+}
+
+/* Estilo para las publicaciones del usuario */
+.user-posts {
+    flex: 2;
+    padding: 20px;
+    background: #f7f7f7;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.user-posts h1 {
+    text-align: center;
+    color: #8f5632;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.post-card {
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #8f5632;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+}
+
+.post-card h3 {
+    font-size: 1.5em;
+}
+
+.post-card p {
+    margin: 10px 0;
+}
+
+.post-card small {
+    font-size: 0.8em;
+    color: #ddd;
+}
+
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+        transform: translateX(-5000px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}

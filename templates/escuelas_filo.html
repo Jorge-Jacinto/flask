@@ -1,0 +1,34 @@
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/esc_filo.css')}}">{% endblock %}
+{% block body %}
+
+<header>
+    <div class="navigation">
+        <ul class="menu">
+            <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+            <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+            <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+            <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+</header>
+    <div class="three_sec">
+        <div class="filo_sec"><p>Aristotelismo</p><a href="{{ url_for('aristotelismo') }}">Visitar</a></div>
+        <div class="filo_sec"><p>Cinismo</p><a href="{{ url_for('cinismo') }}">Visitar</a></div>
+        <div class="filo_sec"><p>Empirismo</p><a href="{{ url_for('empirismo') }}">Visitar</a></div>
+        <div class="filo_sec"><p>Estoicismo</p><a href="{{ url_for('estoicismo') }}">Visitar</a></div>
+    </div>
+    <div class="three_sec">
+        <div class="filo_sec"><p>Existencialismo</p><a href="{{ url_for('existencialismo') }}">Visitar</a></div>
+        <div class="filo_sec"><p>Hedonismo</p><a href="{{ url_for('hedonismo') }}">Visitar</a></div>
+        <div class="filo_sec"><p>Humanismo</p><a href="{{ url_for('humanismo') }}">Visitar</a></div>
+        <div class="filo_sec"><p>Idealismo</p><a href="{{ url_for('idealismo') }}">Visitar</a></div>
+    </div>
+    <div class="three_sec">
+        <div class="filo_sec"><p>Nihilismo</p><a href="{{ url_for('nihilismo') }}">Visitar</a></div>
+        <div class="filo_sec"><p>Platonismo</p><a href="{{ url_for('platonismo') }}">Visitar</a></div>
+        <div class="filo_sec"><p>Racionalismo</p><a href="{{ url_for('racionalismo') }}">Visitar</a></div>
+        <div class="filo_sec"><p>Realismo</p><a href="{{ url_for('realismo') }}">Visitar</a></div>
+    </div>
+
+{% endblock %}

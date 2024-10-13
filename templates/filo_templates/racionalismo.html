@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Racionalismo</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="navigation">
+        <ul class="menu">
+            <li class="menu-item"><h1>El marco filosófico del Racionalismo</h1></li>
+            <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+            <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+            <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+            <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+  </header>
+  
+  <main>
+    <section>
+      <br><br><h2>Sobre el Racionalismo</h2>
+      <p>El Racionalismo es una corriente filosófica que sostiene que el conocimiento se obtiene principalmente a través de la razón, y no tanto a través de los sentidos. Según los racionalistas, la razón es la herramienta más confiable para alcanzar la verdad, ya que puede acceder a principios universales y necesarios que no dependen de la experiencia.</p>
+      <p>Esta filosofía se opone al empirismo, que argumenta que el conocimiento proviene exclusivamente de la experiencia sensorial. El Racionalismo fue una de las corrientes predominantes en la filosofía moderna.</p>
+    </section>
+
+    <section class="quotes">
+      <h2>Citas Famosas</h2>
+      <blockquote> "Pienso, luego existo." - René Descartes, <em>Discurso del método</em> </blockquote>
+      <blockquote> "El orden y la conexión de las ideas es el mismo que el orden y la conexión de las cosas." - Baruch Spinoza </blockquote>
+    </section>
+
+    <section>
+      <h2>Autores y Filósofos Emblemáticos</h2>
+      <p>Algunos de los filósofos más destacados de la escuela racionalista son:</p>
+      <ul>
+        <li>René Descartes (1596-1650)</li>
+        <li>Baruch Spinoza (1632-1677)</li>
+        <li>Gottfried Wilhelm Leibniz (1646-1716)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Recursos Recomendados</h2>
+      <p>Aquí tienes algunos recursos valiosos sobre el Racionalismo:</p>
+      <ul>
+        <li>Libro: <a href="https://posgrado.unam.mx/musica/lecturas/LecturaIntroduccionInvestigacionMusical/epistemologia/Descartes-Discurso-Del-Metodo.pdf">Discurso del método</a> - René Descartes</li>
+        <li>Libro: <a href="https://posgrado.unam.mx/filosofia/wp-content/uploads/2019/03/Spinoza_E%CC%81tica.pdf">Ética</a> - Baruch Spinoza</li>
+        <li>Libro: <a href="https://www.philosophia.cl/biblioteca/leibniz/monadologia.pdf">Monadología </a> - Leibniz</li>
+      </ul>
+    </section>
+
+    <section class="word-search">
+        <h2>Sopa de letras: Filosofía Racionalista</h2>
+        <p>Encuentra las siguientes palabras relacionadas con el racionalismo:</p>
+        <ul id="word-list">
+            <li>DESCARTES</li>
+            <li>RAZÓN</li>
+            <li>SPINOZA</li>
+            <li>LEIBNIZ</li>
+            <li>LOGICA</li>
+        </ul>
+        <div id="word-grid"></div>
+        <p id="status"></p>
+    </section>
+    
+    <script>
+        const words = ["DESCARTES", "RAZON", "SPINOZA", "LEIBNIZ", "LOGICA"]; //LISTO
+        const gridSize = 10;
+        let selectedCells = [];
+        let foundWords = [];
+    
+        const wordGrid = document.getElementById('word-grid');
+        const status = document.getElementById('status');
+    
+        const grid = [
+            ['D', 'E', 'S', 'C', 'A', 'R', 'T', 'E', 'S', 'A'],
+            ['B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'P', 'K'],
+            ['S', 'P', 'I', 'N', 'O', 'Z', 'A', 'B', 'I', 'D'],
+            ['L', 'E', 'Z', 'B', 'N', 'I', 'Z', 'E', 'N', 'G'],
+            ['H', 'I', 'J', 'I', 'L', 'M', 'N', 'O', 'O', 'N'],
+            ['C', 'O', 'N', 'O', 'N', 'I', 'M', 'I', 'Z', 'O'],
+            ['T', 'O', 'B', 'C', 'E', 'B', 'F', 'U', 'A', 'Z'],
+            ['Q', 'R', 'A', 'Z', 'O', 'N', 'I', 'O', 'L', 'A'],
+            ['A', 'B', 'C', 'D', 'E', 'F', 'H', 'E', 'T', 'R'],
+            ['L', 'O', 'G', 'I', 'C', 'A', 'L', 'I', 'L', 'N']
+        ];
+    
+        // Función para crear la cuadrícula
+        function createGrid() {
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    const cell = document.createElement('div');
+                    cell.textContent = grid[i][j];
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    cell.addEventListener('click', selectCell);
+                    wordGrid.appendChild(cell);
+                }
+            }
+        }
+    
+        // Función para seleccionar una celda
+        function selectCell() {
+            const row = this.dataset.row;
+            const col = this.dataset.col;
+            const letter = grid[row][col];
+    
+            if (this.classList.contains('selected')) {
+                this.classList.remove('selected');
+                selectedCells = selectedCells.filter(cell => cell !== `${row},${col}`);
+            } else {
+                this.classList.add('selected');
+                selectedCells.push(`${row},${col}`);
+            }
+    
+            checkWord();
+        }
+    
+        // Función para comprobar si se ha encontrado una palabra
+        function checkWord() {
+            let selectedWord = selectedCells.map(cell => {
+                const [row, col] = cell.split(',');
+                return grid[row][col];
+            }).join('');
+    
+            if (words.includes(selectedWord)) {
+                foundWords.push(selectedWord);
+                selectedCells.forEach(cell => {
+                    const [row, col] = cell.split(',');
+                    const gridCell = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+                    gridCell.classList.add('found');
+                });
+    
+                selectedCells = [];
+                status.textContent = `¡Encontraste la palabra: ${selectedWord}!`;
+                if (foundWords.length === words.length) {
+                    status.textContent = "¡Felicidades! Has encontrado todas las palabras.";
+                }
+            }
+        }
+    
+        createGrid();
+    </script>
+    
+  </main>
+</body>
+</html>

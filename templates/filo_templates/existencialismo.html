@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Existencialismo</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="navigation">
+            <ul class="menu">
+                <li class="menu-item"><h1>El marco filosófico del Existencialismo</h1></li>
+                <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+                <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+                <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+                <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+            </ul>
+        </div>
+    </header>
+  <main>
+    <section>
+      <br><br><h2>Sobre el Existencialismo</h2>
+      <p>El Existencialismo es una corriente filosófica centrada en la libertad individual, la responsabilidad y la experiencia subjetiva del ser humano. Nació en el siglo XIX y alcanzó su auge en el siglo XX, especialmente en Europa, en respuesta a los tiempos de incertidumbre social y política.</p>
+      <p>El existencialismo sostiene que la vida carece de sentido inherente, y es el individuo quien debe crear su propio propósito. Temas como la angustia, el absurdo y la libertad son centrales en esta filosofía. Los pensadores existencialistas exploran las limitaciones de la condición humana y el desafío de vivir auténticamente.</p>
+    </section>
+
+    <section class="quotes">
+      <h2>Citas Famosas</h2>
+      <blockquote> "La existencia precede a la esencia." - Jean-Paul Sartre </blockquote>
+      <blockquote> "El hombre está condenado a ser libre." - Jean-Paul Sartre </blockquote>
+    </section>
+
+    <section>
+      <h2>Autores y Filósofos Emblemáticos</h2>
+      <p>Algunos de los filósofos más destacados de la escuela existencialista son:</p>
+      <ul>
+        <li>Jean-Paul Sartre (1905-1980)</li>
+        <li>Friedrich Nietzsche (1844-1900)</li>
+        <li>Simone de Beauvoir (1908-1986)</li>
+        <li>Martin Heidegger (1889-1976)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Recursos Recomendados</h2>
+      <p>Aquí tienes algunos recursos valiosos sobre el Existencialismo:</p>
+      <ul>
+        <li>Libro: <a href="http://www.elseminario.com.ar/Biblioteca/Sartre_Ser_Nada.pdf">El ser y la nada</a> - Jean-Paul Sartre</li>
+        <li>Libro: <a href="https://archive.org/details/el-extranjero-albert-camus/mode/2up">El extranjero</a> - Albert Camus</li>
+        <li>Libro: <a href="https://repository.upb.edu.co/bitstream/handle/20.500.11912/9244/Albert%20Camus_el%20hombre%20rebelde.pdf?sequence=1&isAllowed=y">El hombre rebelde</a> - Albert Camus</li>
+      </ul>
+    </section>
+
+    <section class="word-search">
+        <h2>Sopa de letras: Filosofía Existencialista</h2>
+        <p>Encuentra las siguientes palabras relacionadas con el Existencialismo:</p>
+        <ul id="word-list">
+            <li>LIBERTAD</li>
+            <li>ANGUSTIA</li>
+            <li>EXISTENCIA</li>
+            <li>ABSURDO</li>
+            <li>LIQUIDA</li>
+        </ul>
+        <div id="word-grid"></div>
+        <p id="status"></p>
+    </section>
+    
+    <script>
+        const words = ["LIBERTAD", "ANGUSTIA", "EXISTENCIA", "ABSURDO", "LIQUIDA"]; //LISTO
+        const gridSize = 10;
+        let selectedCells = [];
+        let foundWords = [];
+    
+        const wordGrid = document.getElementById('word-grid');
+        const status = document.getElementById('status');
+    
+        const grid = [
+            ['L', 'I', 'B', 'E', 'R', 'T', 'A', 'D', 'O', 'P'],
+            ['A', 'N', 'G', 'U', 'S', 'T', 'I', 'A', 'M', 'S'],
+            ['J', 'K', 'L', 'A', 'N', 'O', 'P', 'L', 'Z', 'B'],
+            ['A', 'B', 'S', 'U', 'D', 'D', 'O', 'O', 'R', 'S'],
+            ['J', 'K', 'L', 'M', 'N', 'I', 'D', 'L', 'Z', 'B'],
+            ['U', 'T', 'R', 'N', 'E', 'R', 'U', 'P', 'C', 'T'],
+            ['H', 'A', 'B', 'S', 'U', 'R', 'D', 'Q', 'A', 'I'],
+            ['E', 'X', 'I', 'S', 'T', 'E', 'N', 'C', 'I', 'A'],
+            ['T', 'S', 'B', 'N', 'B', 'S', 'X', 'A', 'T', 'L'],
+            ['S', 'A', 'D', 'H', 'U', 'B', 'O', 'A', 'C', 'D']
+        ];
+    
+        
+        function createGrid() {
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    const cell = document.createElement('div');
+                    cell.textContent = grid[i][j];
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    cell.addEventListener('click', selectCell);
+                    wordGrid.appendChild(cell);
+                }
+            }
+        }
+    
+        
+        function selectCell() {
+            const row = this.dataset.row;
+            const col = this.dataset.col;
+    
+            if (this.classList.contains('selected')) {
+                this.classList.remove('selected');
+                selectedCells = selectedCells.filter(cell => cell !== `${row},${col}`);
+            } else {
+                this.classList.add('selected');
+                selectedCells.push(`${row},${col}`);
+            }
+    
+            checkWord();
+        }
+    
+        
+        function checkWord() {
+            let selectedWord = selectedCells.map(cell => {
+                const [row, col] = cell.split(',');
+                return grid[row][col];
+            }).join('');
+    
+            if (words.includes(selectedWord)) {
+                foundWords.push(selectedWord);
+                selectedCells.forEach(cell => {
+                    const [row, col] = cell.split(',');
+                    const gridCell = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+                    gridCell.classList.add('found');
+                });
+    
+                selectedCells = [];
+                status.textContent = `¡Encontraste la palabra: ${selectedWord}!`;
+                if (foundWords.length === words.length) {
+                    status.textContent = "¡Felicidades! Has encontrado todas las palabras.";
+                }
+            }
+        }
+    
+        createGrid();
+    </script>
+    
+  </main>
+</body>
+</html>

@@ -1,0 +1,105 @@
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/register.css')}}">{% endblock %}
+{% block body %}
+<div class="container">
+        <!-- Sección 1 -->
+        <div class="section active" id="section-1">
+            <h1>Pregunta 6(1/3): ¿Cómo abordas la cuestión de lo que constituye el conocimiento?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Es la aprehensión de formas o ideales eternos e inmutables, más allá de la mera experiencia sensorial." value='1'> 
+                Es la aprehensión de formas o ideales eternos e inmutables, más allá de la mera experiencia sensorial.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Procede de la comprensión de la estructura racional del universo y de la adecuación de las propias creencias a esta comprensión." value='4'> 
+                Procede de la comprensión de la estructura racional del universo y de la adecuación de las propias creencias a esta comprensión.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Una combinación de investigación empírica, indagación racional y aplicación de los valores humanos y la ética." value='8'> 
+                Una combinación de investigación empírica, indagación racional y aplicación de los valores humanos y la ética.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Toma valor por su utilidad práctica para aumentar la satisfacción vital y orientar las acciones hacia resultados placenteros."value='10'> 
+                Toma valor por su utilidad práctica para aumentar la satisfacción vital y orientar las acciones hacia resultados placenteros.<br>
+            </label>
+            <div class="button-container">
+                <button onclick="nextSection(1, 2)">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Sección 2 -->
+        <div class="section" id="section-2">
+            <h1>Pregunta 6(2/3): ¿Cómo abordas la cuestión de lo que constituye el conocimiento?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+
+            <label class="option">
+                <input type="radio" name="answer2" data-text="Se deriva de la observación empírica y el análisis lógico, integrando tanto los datos sensoriales como el pensamiento racional." value='2'> 
+                Se deriva de la observación empírica y el análisis lógico, integrando tanto los datos sensoriales como el pensamiento racional.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="Es la representación exacta del mundo exterior tal y como existe independientemente de nuestros pensamientos y percepciones." value='5'> 
+                Es la representación exacta del mundo exterior tal y como existe independientemente de nuestros pensamientos y percepciones.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="Es personal y subjetivo, moldeado por las experiencias individuales y los significados que les asignamos." value='9'> 
+                Es personal y subjetivo, moldeado por las experiencias individuales y los significados que les asignamos.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="Cuestiono las pretensiones de conocimiento, con escepticismo sobre la posibilidad de un conocimiento absoluto o cierto." value='11'> 
+                Cuestiono las pretensiones de conocimiento, con escepticismo sobre la posibilidad de un conocimiento absoluto o cierto.<br>
+            </label>
+
+            <div class="button-container">
+                <button onclick="prevSection(1)">Anterior</button>
+                <button onclick="nextSection(2, 3)">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Sección 3 -->
+        <div class="section" id="section-3">
+            <h1>Pregunta 6(3/3): ¿Cómo abordas la cuestión de lo que constituye el conocimiento?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+
+            <label class="option">
+                <input type="radio" name="answer3" data-text=" Se basa en la capacidad de la mente para captar ideas y conceptos, que conforman nuestra percepción de la realidad." value='3'> 
+                Se basa en la capacidad de la mente para captar ideas y conceptos, que conforman nuestra percepción de la realidad.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="Se obtiene principalmente a través de la razón y la deducción intelectual, más que de la experiencia sensorial." value='6'> 
+                Se obtiene principalmente a través de la razón y la deducción intelectual, más que de la experiencia sensorial.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="Surge de las experiencias sensoriales y las pruebas, que constituyen la base de todo entendimiento." value='7'> 
+                Surge de las experiencias sensoriales y las pruebas, que constituyen la base de todo entendimiento.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="Haciendo hincapié en distinguir la comprensión genuina de las ilusiones y pretensiones sociales." value='12'> 
+                Haciendo hincapié en distinguir la comprensión genuina de las ilusiones y pretensiones sociales.<br>
+            </label>
+
+            <div class="button-container">
+                <button onclick="prevSection(2)">Anterior</button>
+                <button onclick="showResults()">Mostrar Resultados</button>
+            </div>
+        </div>
+
+        <!-- Sección de Resultados -->
+        <div class="section" id="section-results">
+            <h1>Respuestas Seleccionadas</h1>
+            <div id="results"></div>
+            
+            <h2>Selecciona tu respuesta final de las elegidas anteriormente:</h2>
+            <div id="final-selection"></div>
+    
+            <div class="button-container">
+                <button onclick="selectFinalAnswer()">Confirmar Respuesta Final</button>
+            </div>
+            
+            <div id="final-result" style="display:none;">
+                <h3>Respuesta Final Seleccionada:</h3>
+                <p id="final-answer"></p>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/register6.js') }}"></script>
+{% endblock %}

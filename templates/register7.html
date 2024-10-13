@@ -1,0 +1,105 @@
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/register.css')}}">{% endblock %}
+{% block body %}
+<div class="container">
+        <!-- Sección 1 -->
+        <div class="section active" id="section-1">
+            <h1>Pregunta 7(1/3): ¿Qué papel crees que desempeñan la razón y la emoción en la toma de decisiones?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="La razón debería dominar la toma de decisiones, ya que las emociones se consideran potencialmente engañosas." value='1'> 
+                La razón debería dominar la toma de decisiones, ya que las emociones se consideran potencialmente engañosas.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="La razón es primordial en la toma de decisiones, es necesario controlar las emociones y alinearlas con los principios racionales." value='4'> 
+                La razón es primordial en la toma de decisiones, es necesario controlar las emociones y alinearlas con los principios racionales.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Ambas juegan un papel importante, la razón guía las acciones pero las emociones dan forma al contexto humano." value='8'> 
+                Ambas juegan un papel importante, la razón guía las acciones pero las emociones dan forma al contexto humano.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Las emociones nos guían hacia experiencias gratificantes, la razón solo evalúa qué placeres seguir."value='10'> 
+                Las emociones nos guían hacia experiencias gratificantes, la razón solo evalúa qué placeres seguir.<br>
+            </label>
+            <div class="button-container">
+                <button onclick="nextSection(1, 2)">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Sección 2 -->
+        <div class="section" id="section-2">
+            <h1>Pregunta 7(2/3): ¿Qué papel crees que desempeñan la razón y la emoción en la toma de decisiones?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+
+            <label class="option">
+                <input type="radio" name="answer2" data-text="Ambas deben estar en equilibrio. La virtud se encuentra en controlar las emociones a través de la razón." value='2'> 
+                Ambas deben estar en equilibrio. La virtud se encuentra en controlar las emociones a través de la razón.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="La razón analiza los hechos, pero las emociones influyen y a menudo aportan una perspectiva valiosa." value='5'> 
+                La razón analiza los hechos, pero las emociones influyen y a menudo aportan una perspectiva valiosa.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="Las emociones son fundamentales para la experiencia humana, aunque la razón ayuda a darles sentido." value='9'> 
+                Las emociones son fundamentales para la experiencia humana, aunque la razón ayuda a darles sentido.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="Ninguna tiene importancia última, ya que el universo no tiene un significado inherente." value='11'> 
+                Ninguna tiene importancia última, ya que el universo no tiene un significado inherente.<br>
+            </label>
+
+            <div class="button-container">
+                <button onclick="prevSection(1)">Anterior</button>
+                <button onclick="nextSection(2, 3)">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Sección 3 -->
+        <div class="section" id="section-3">
+            <h1>Pregunta 7(3/3): ¿Qué papel crees que desempeñan la razón y la emoción en la toma de decisiones?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+
+            <label class="option">
+                <input type="radio" name="answer3" data-text="La razón tiene primacía, ya que las emociones son secundarias y dependientes de cómo las ideas moldean la realidad." value='3'> 
+                La razón tiene primacía, ya que las emociones son secundarias y dependientes de cómo las ideas moldean la realidad.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="La razón debe gobernar la toma de decisiones, y las emociones deben ser subordinadas." value='6'> 
+                La razón debe gobernar la toma de decisiones, y las emociones deben ser subordinadas.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="Las decisiones se basan tanto en la experiencia sensorial como en la evaluación racional, las emociones pueden sesgar los juicios." value='7'> 
+                Las decisiones se basan tanto en la experiencia sensorial como en la evaluación racional, las emociones pueden sesgar los juicios.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="Las decisiones racionales son las más genuinas, las emociones tienden a confundir y deben minimizarse." value='12'> 
+                Las decisiones racionales son las más genuinas, las emociones tienden a confundir y deben minimizarse.<br>
+            </label>
+
+            <div class="button-container">
+                <button onclick="prevSection(2)">Anterior</button>
+                <button onclick="showResults()">Mostrar Resultados</button>
+            </div>
+        </div>
+
+        <!-- Sección de Resultados -->
+        <div class="section" id="section-results">
+            <h1>Respuestas Seleccionadas</h1>
+            <div id="results"></div>
+            
+            <h2>Selecciona tu respuesta final de las elegidas anteriormente:</h2>
+            <div id="final-selection"></div>
+    
+            <div class="button-container">
+                <button onclick="selectFinalAnswer()">Confirmar Respuesta Final</button>
+            </div>
+            
+            <div id="final-result" style="display:none;">
+                <h3>Respuesta Final Seleccionada:</h3>
+                <p id="final-answer"></p>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/register7.js') }}"></script>
+{% endblock %}

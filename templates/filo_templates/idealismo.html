@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Idealismo</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="navigation">
+        <ul class="menu">
+            <li class="menu-item"><h1>El marco filosófico del Idealismo</h1></li>
+            <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+            <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+            <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+            <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+  </header>
+  
+  <main>
+    <section>
+      <br><br><h2>Sobre el Idealismo</h2>
+      <p>El Idealismo es una corriente filosófica que afirma que la realidad es esencialmente mental o espiritual. Según los idealistas, el mundo tal como lo percibimos no existe independientemente de nuestras mentes, sino que es una construcción de la consciencia.</p>
+      <p>Filósofos clave del Idealismo incluyen a Immanuel Kant, quien desarrolló el idealismo trascendental, y Georg Wilhelm Friedrich Hegel, conocido por su concepto del idealismo absoluto.</p>
+    </section>
+
+    <section class="quotes">
+      <h2>Citas Famosas</h2>
+      <blockquote> "El conocimiento comienza con la experiencia, pero no todo el conocimiento procede de la experiencia." - Immanuel Kant </blockquote>
+      <blockquote> "Todo lo racional es real, y todo lo real es racional." - G.W.F. Hegel </blockquote>
+    </section>
+
+    <section>
+      <h2>Autores y Filósofos Emblemáticos</h2>
+      <p>Algunos de los filósofos más destacados de la escuela idealista son:</p>
+      <ul>
+        <li>Immanuel Kant (1724-1804)</li>
+        <li>Georg Wilhelm Friedrich Hegel (1770-1831)</li>
+        <li>Friedrich Schelling (1775-1854)</li>
+        <li>Johann Gottlieb Fichte (1762-1814)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Recursos Recomendados</h2>
+      <p>Aquí tienes algunos recursos valiosos sobre el Idealismo:</p>
+      <ul>
+        <li>Libro: <a href="https://enriquedussel.com/txt/Textos_200_Obras/Aime_zapatistas/C.Razon_pura-Immanuel_Kant.pdf">Crítica de la razón pura</a> - Immanuel Kant</li>
+        <li>Libro: <a href="https://www.proletarios.org/books/Hegel-Fenomenologia_Del_Espiritu.pdf">Fenomenología del espíritu</a> - G.W.F. Hegel</li>
+      </ul>
+    </section>
+
+    <section class="word-search">
+        <h2>Sopa de letras: Filosofía Idealista</h2>
+        <p>Encuentra las siguientes palabras relacionadas con el idealismo:</p>
+        <ul id="word-list">
+            <li>HEGEL</li>
+            <li>KANT</li>
+            <li>ESPIRITU</li>
+            <li>RAZON</li>
+            <li>MENTES</li>
+        </ul>
+        <div id="word-grid"></div>
+        <p id="status"></p>
+    </section>
+    
+    <script>
+        const words = ["HEGEL", "KANT", "ESPIRITU", "RAZON", "MENTES"];
+        const gridSize = 10;
+        let selectedCells = [];
+        let foundWords = [];
+    
+        const wordGrid = document.getElementById('word-grid');
+        const status = document.getElementById('status');
+    
+        const grid = [
+            ['H', 'E', 'G', 'E', 'L', 'I', 'R', 'A', 'Z', 'O'],
+            ['A', 'K', 'A', 'N', 'T', 'I', 'R', 'I', 'T', 'U'],
+            ['E', 'S', 'P', 'I', 'R', 'I', 'T', 'U', 'C', 'E'],
+            ['M', 'I', 'D', 'E', 'A', 'B', 'L', 'C', 'A', 'L'],
+            ['O', 'N', 'R', 'E', 'M', 'L', 'I', 'Z', 'A', 'N'],
+            ['T', 'N', 'I', 'N', 'T', 'E', 'L', 'E', 'C', 'T'],
+            ['U', 'O', 'S', 'I', 'E', 'S', 'N', 'N', 'D', 'T'],
+            ['I', 'Z', 'E', 'G', 'I', 'B', 'L', 'T', 'O', 'Y'],
+            ['M', 'A', 'X', 'T', 'A', 'S', 'A', 'I', 'E', 'C'],
+            ['N', 'R', 'T', 'I', 'O', 'N', 'A', 'L', 'I', 'S']
+        ];
+    
+        // Función para crear la cuadrícula
+        function createGrid() {
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    const cell = document.createElement('div');
+                    cell.textContent = grid[i][j];
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    cell.addEventListener('click', selectCell);
+                    wordGrid.appendChild(cell);
+                }
+            }
+        }
+    
+        // Función para seleccionar una celda
+        function selectCell() {
+            const row = this.dataset.row;
+            const col = this.dataset.col;
+            const letter = grid[row][col];
+    
+            if (this.classList.contains('selected')) {
+                this.classList.remove('selected');
+                selectedCells = selectedCells.filter(cell => cell !== `${row},${col}`);
+            } else {
+                this.classList.add('selected');
+                selectedCells.push(`${row},${col}`);
+            }
+    
+            checkWord();
+        }
+    
+        // Función para comprobar si se ha encontrado una palabra
+        function checkWord() {
+            let selectedWord = selectedCells.map(cell => {
+                const [row, col] = cell.split(',');
+                return grid[row][col];
+            }).join('');
+    
+            if (words.includes(selectedWord)) {
+                foundWords.push(selectedWord);
+                selectedCells.forEach(cell => {
+                    const [row, col] = cell.split(',');
+                    const gridCell = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+                    gridCell.classList.add('found');
+                });
+    
+                selectedCells = [];
+                status.textContent = `¡Encontraste la palabra: ${selectedWord}!`;
+                if (foundWords.length === words.length) {
+                    status.textContent = "¡Felicidades! Has encontrado todas las palabras.";
+                }
+            }
+        }
+    
+        createGrid();
+    </script>
+    
+  </main>
+</body>
+</html>

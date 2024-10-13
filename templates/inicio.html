@@ -1,0 +1,47 @@
+{% extends './layout.html' %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/inicio.css') }}">
+{% endblock %}
+
+{% block body %}
+    <header>
+        <div class="navigation">
+            <ul class="menu">
+                <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+                <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+                <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+                <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section style="padding-top: 100px; display: flex; justify-content: space-between; padding: 0 100px;">
+        <!-- Sección del perfil del usuario -->
+        <div class="user-profile">
+            <h1>Perfil del Usuario</h1>
+            <div class="profile-card">
+                <h2>{{ user_data['nombres'] }} {{ user_data['apellidos'] }}</h2>
+                <p><strong>Usuario:</strong> {{ user_data['usuario'] }}</p>
+                <p><strong>Clase Filosófica:</strong> {{ user_data['clase'] }}</p>
+                <p><strong>Fecha de Registro:</strong> {{ user_data['fecha_registro'] }}</p>
+            </div>
+        </div>
+
+        <!-- Sección de las últimas publicaciones -->
+        <div class="user-posts">
+            <h1>Tus Últimas Publicaciones</h1>
+            <ul style="list-style-type: none; padding: 0;">
+            {% for post in user_posts %}
+                <li class="post-card">
+                    <h3>{{ post[0] }}</h3>
+                    <p>{{ post[1] }}</p>
+                    <p>{{ post[3] }}</p>
+                    <small>Publicado el {{ post[2] }}</small>
+                </li>
+            {% else %}
+                <p>No has realizado publicaciones aún.</p>
+            {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endblock %}

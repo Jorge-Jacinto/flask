@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Realismo</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="navigation">
+        <ul class="menu">
+            <li class="menu-item"><h1>El marco filosófico del Realismo</h1></li>
+            <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+            <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+            <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+            <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+  </header>
+  
+  <main>
+    <section>
+      <br><br><h2>Sobre el Realismo</h2>
+      <p>El Realismo filosófico es una corriente de pensamiento que sostiene que la realidad existe independientemente de nuestra percepción o conocimiento. Según el realismo, el mundo material es objetivo y sus propiedades no dependen de la mente humana.</p>
+      <p>Este enfoque filosófico contrasta con el idealismo, que sostiene que la realidad está ligada a las ideas o percepciones. El realismo puede dividirse en diferentes formas, como el realismo clásico, el realismo científico y el realismo moral.</p>
+    </section>
+
+    <section class="quotes">
+      <h2>Citas Famosas</h2>
+      <blockquote> "Nada hay en el entendimiento que no haya pasado antes por los sentidos." - Tomás de Aquino </blockquote>
+      <blockquote> "El mundo existe de manera independiente de cómo lo pensamos." - Bertrand Russell </blockquote>
+    </section>
+
+    <section>
+      <h2>Autores y Filósofos Emblemáticos</h2>
+      <p>Algunos de los filósofos más destacados de la escuela realista son:</p>
+      <ul>
+        <li>Aristóteles (384-322 a.C.)</li>
+        <li>Tomás de Aquino (1225-1274)</li>
+        <li>Bertrand Russell (1872-1970)</li>
+        <li>John Searle (1932-2020)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Recursos Recomendados</h2>
+      <p>Aquí tienes algunos recursos valiosos sobre el Realismo:</p>
+      <ul>
+        <li>Libro: <a href="https://www.philosophia.cl/biblioteca/aristoteles/metafisica.pdf">Metafísica</a> - Aristóteles</li>
+        <li>Libro: <a href="https://archivos.juridicas.unam.mx/www/bjv/libros/6/2711/5.pdf">El pensamiento realista</a> - Bertrand Russell</li>
+      </ul>
+    </section>
+
+    <section class="word-search">
+        <h2>Sopa de letras: Filosofía Realista</h2>
+        <p>Encuentra las siguientes palabras relacionadas con el realismo:</p>
+        <ul id="word-list">
+            <li>REALISMO</li>
+            <li>SEARLE</li>
+            <li>AQUINO</li>
+            <li>RUSSELL</li>
+            <li>OBJETIVO</li>
+        </ul>
+        <div id="word-grid"></div>
+        <p id="status"></p>
+    </section>
+    
+    <script>
+        const words = ["REALISMO", "SEARLE", "AQUINO", "RUSSELL", "OBJETIVO"]; //LISTO
+        const gridSize = 10;
+        let selectedCells = [];
+        let foundWords = [];
+    
+        const wordGrid = document.getElementById('word-grid');
+        const status = document.getElementById('status');
+    
+        const grid = [
+            ['R', 'E', 'A', 'L', 'I', 'S', 'M', 'O', 'A', 'B'],
+            ['O', 'L', 'U', 'I', 'N', 'O', 'C', 'D', 'E', 'F'],
+            ['B', 'R', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'],
+            ['J', 'A', 'Q', 'U', 'I', 'N', 'O', 'Q', 'R', 'R'],
+            ['E', 'E', 'I', 'S', 'T', 'O', 'T', 'E', 'U', 'E'],
+            ['T', 'S', 'R', 'O', 'P', 'E', 'D', 'S', 'S', 'R'],
+            ['I', 'J', 'P', 'V', 'Y', 'L', 'S', 'E', 'M', 'U'],
+            ['V', 'Q', 'W', 'K', 'N', 'E', 'B', 'T', 'I', 'D'],
+            ['O', 'O', 'R', 'O', 'L', 'A', 'S', 'P', 'O', 'N'],
+            ['E', 'I', 'V', 'L', 'J', 'L', 'K', 'Q', 'M', 'X']
+        ];
+    
+        // Función para crear la cuadrícula
+        function createGrid() {
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    const cell = document.createElement('div');
+                    cell.textContent = grid[i][j];
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    cell.addEventListener('click', selectCell);
+                    wordGrid.appendChild(cell);
+                }
+            }
+        }
+    
+        // Función para seleccionar una celda
+        function selectCell() {
+            const row = this.dataset.row;
+            const col = this.dataset.col;
+            const letter = grid[row][col];
+    
+            if (this.classList.contains('selected')) {
+                this.classList.remove('selected');
+                selectedCells = selectedCells.filter(cell => cell !== `${row},${col}`);
+            } else {
+                this.classList.add('selected');
+                selectedCells.push(`${row},${col}`);
+            }
+    
+            checkWord();
+        }
+    
+        // Función para comprobar si se ha encontrado una palabra
+        function checkWord() {
+            let selectedWord = selectedCells.map(cell => {
+                const [row, col] = cell.split(',');
+                return grid[row][col];
+            }).join('');
+    
+            if (words.includes(selectedWord)) {
+                foundWords.push(selectedWord);
+                selectedCells.forEach(cell => {
+                    const [row, col] = cell.split(',');
+                    const gridCell = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+                    gridCell.classList.add('found');
+                });
+    
+                selectedCells = [];
+                status.textContent = `¡Encontraste la palabra: ${selectedWord}!`;
+                if (foundWords.length === words.length) {
+                    status.textContent = "¡Felicidades! Has encontrado todas las palabras.";
+                }
+            }
+        }
+    
+        createGrid();
+    </script>
+    
+  </main>
+</body>
+</html>

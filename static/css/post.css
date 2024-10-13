@@ -1,0 +1,130 @@
+/* Estructura base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Estilo para el cuerpo y fondo */
+body {
+    background: url('../images/background_forum.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    padding-left: 240px;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+/* Estilo para la cabecera */
+header {
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background: #8f5632;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 0 100px;
+}
+
+header .navigation {
+    position: relative;
+    line-height: 50px;
+}
+
+header .navigation .menu {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    user-select: none;
+}
+
+.menu-item > a {
+    color: #F7EACC;
+    font-size: 1em;
+    text-decoration: none;
+    margin: 20px;
+    padding: 25px 0;
+}
+
+.menu-item > a:hover {
+    color: #fff;
+    transition: 0.3s;
+}
+
+.forum-container {
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.add-post {
+    width: 800px;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #8f5632;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    color: #f7eacc;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+/* Estilo del textarea */
+textarea {
+    width: 100%;
+    height: 80px;  /* Altura ajustada */
+    padding: 15px;
+    border: 2px solid #8f5632;
+    border-radius: 10px;
+    background-color: #ffffff;
+    resize: vertical; /* Permite cambiar el tamaño solo verticalmente */
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    margin-bottom: 15px;
+    line-height: 1.4; /* Ajuste de altura de línea para mejor legibilidad */
+    word-wrap: break-word; /* Ajusta las líneas para palabras largas */
+    transition: border 0.3s ease;
+}
+
+
+/* Efecto al hacer clic en el textarea */
+textarea:focus {
+    border: 2px solid #8f5632;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+    height: 50px;
+}
+
+/* Botón para enviar comentario */
+.submit-comment {
+    padding: 10px 20px;
+    background-color: #F7EACC;
+    color: #8f5632;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-weight: bold;
+}
+
+.submit-comment:hover {
+    background-color: #6d4325;
+    color: ;
+}

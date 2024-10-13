@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Platonismo</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="navigation">
+        <ul class="menu">
+            <li class="menu-item"><h1>El marco filosófico del Platonismo</h1></li>
+            <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+            <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+            <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+            <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+  </header>
+  
+  <main>
+    <section>
+      <br><br><h2>Sobre el Platonismo</h2>
+      <p>El Platonismo es una escuela de pensamiento filosófico fundada por el filósofo griego Platón en el siglo IV a.C. La idea central del Platonismo es la existencia de un mundo ideal o "mundo de las ideas", donde residen las formas o esencias perfectas de todas las cosas.</p>
+      <p>Según Platón, el mundo material que percibimos a través de nuestros sentidos no es más que una copia imperfecta de este mundo ideal. Por lo tanto, el objetivo del filósofo es trascender el mundo material y acceder al conocimiento de las ideas o formas puras.</p>
+    </section>
+
+    <section class="quotes">
+      <h2>Citas Famosas</h2>
+      <blockquote> "El alma, al razonar bien, se apega a lo mejor y se asemeja a lo divino, inmortal, y sabio." - Platón, <em>Fedón</em> </blockquote>
+      <blockquote> "El ojo del alma ya ha sido elevado para contemplar las realidades eternas." - Platón, <em>La República</em> </blockquote>
+    </section>
+
+    <section>
+      <h2>Autores y Filósofos Emblemáticos</h2>
+      <p>Algunos de los filósofos más destacados de la escuela platónica son:</p>
+      <ul>
+        <li>Platón (428-348 a.C.)</li>
+        <li>Plotino (205-270 d.C.)</li>
+        <li>Proclo (412-485 d.C.)</li>
+        <li>Agustín de Hipona (354-430 d.C.)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Recursos Recomendados</h2>
+      <p>Aquí tienes algunos recursos valiosos sobre el Platonismo:</p>
+      <ul>
+        <li>Libro: <a href="https://cdn.pruebat.org/recursos/recursos/libros/pdf/La-Republica.pdf">La República</a> - Platón</li>
+        <li>Libro: <a href="http://bibliotecadigital.ilce.edu.mx/Colecciones/ObrasClasicas/_docs/Fedon_o_del_alma-Platon.pdf">Fedon</a> - Platón</li>
+      </ul>
+    </section>
+
+    <section class="word-search">
+        <h2>Sopa de letras: Filosofía Platónica</h2>
+        <p>Encuentra las siguientes palabras relacionadas con el platonismo:</p>
+        <ul id="word-list">
+            <li>PLATÓN</li>
+            <li>IDEAS</li>
+            <li>CAVERNA</li>
+            <li>FEDÓN</li>
+            <li>ALMA</li>
+        </ul>
+        <div id="word-grid"></div>
+        <p id="status"></p>
+    </section>
+    
+    <script>
+        const words = ["PLATON", "IDEAS", "CAVERNA", "FEDON", "ALMA"]; //LISTO
+        const gridSize = 10;
+        let selectedCells = [];
+        let foundWords = [];
+    
+        const wordGrid = document.getElementById('word-grid');
+        const status = document.getElementById('status');
+    
+        const grid = [
+            ['P', 'L', 'A', 'T', 'O', 'N', 'A', 'B', 'C', 'D'],
+            ['I', 'D', 'E', 'A', 'S', 'F', 'G', 'H', 'I', 'J'],
+            ['A', 'L', 'M', 'A', 'M', 'N', 'O', 'P', 'Q', 'R'],
+            ['C', 'A', 'V', 'E', 'R', 'N', 'A', 'S', 'O', 'C'],
+            ['S', 'O', 'C', 'R', 'A', 'T', 'E', 'S', 'Z', 'Y'],
+            ['E', 'T', 'E', 'R', 'N', 'I', 'D', 'A', 'N', 'X'],
+            ['P', 'L', 'A', 'T', 'O', 'N', 'A', 'O', 'G', 'H'],
+            ['I', 'D', 'E', 'A', 'S', 'F', 'D', 'H', 'I', 'J'],
+            ['A', 'L', 'M', 'A', 'M', 'E', 'O', 'P', 'Q', 'R'],
+            ['F', 'E', 'D', 'O', 'F', 'N', 'A', 'S', 'O', 'C']
+        ];
+    
+        // Función para crear la cuadrícula
+        function createGrid() {
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    const cell = document.createElement('div');
+                    cell.textContent = grid[i][j];
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    cell.addEventListener('click', selectCell);
+                    wordGrid.appendChild(cell);
+                }
+            }
+        }
+    
+        // Función para seleccionar una celda
+        function selectCell() {
+            const row = this.dataset.row;
+            const col = this.dataset.col;
+            const letter = grid[row][col];
+    
+            if (this.classList.contains('selected')) {
+                this.classList.remove('selected');
+                selectedCells = selectedCells.filter(cell => cell !== `${row},${col}`);
+            } else {
+                this.classList.add('selected');
+                selectedCells.push(`${row},${col}`);
+            }
+    
+            checkWord();
+        }
+    
+        // Función para comprobar si se ha encontrado una palabra
+        function checkWord() {
+            let selectedWord = selectedCells.map(cell => {
+                const [row, col] = cell.split(',');
+                return grid[row][col];
+            }).join('');
+    
+            if (words.includes(selectedWord)) {
+                foundWords.push(selectedWord);
+                selectedCells.forEach(cell => {
+                    const [row, col] = cell.split(',');
+                    const gridCell = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+                    gridCell.classList.add('found');
+                });
+    
+                selectedCells = [];
+                status.textContent = `¡Encontraste la palabra: ${selectedWord}!`;
+                if (foundWords.length === words.length) {
+                    status.textContent = "¡Felicidades! Has encontrado todas las palabras.";
+                }
+            }
+        }
+    
+        createGrid();
+    </script>
+    
+    
+  </main>
+</body>
+</html>

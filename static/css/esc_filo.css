@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    font-family:"Poppins", sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    min-height: 100vh;
+    background: url('../images/background_esc_filo.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+p {
+    color: #f5f5dc;
+    text-align: center;
+    font-size: 1rem;
+}
+
+header {
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background: #8f5632;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 0 100px;
+}
+
+header .navigation {
+    position: relative;
+    line-height: 50px;
+}
+
+header .navigation .menu {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    user-select: none;
+}
+
+.menu-item > a {
+    color: #F7EACC;
+    font-size: 1em;
+    text-decoration: none;
+    margin: 20px;
+    padding: 25px 0;
+}
+
+.menu-item > a:hover {
+    color: #fff;
+    transition: 0.3s;
+} 
+
+.filo_sec {
+    width: 100%;
+    max-width: 800px;
+    height: 100px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #8f5632;
+    position: relative;
+    box-shadow: 0 0 20px rgb(0, 0, 0); 
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    animation: transitionIn 0.75s;
+    left: 390px;
+    text-align: center;
+}
+
+.three_sec {
+    padding: 10px;
+    padding-top: 10px;
+    position: flex;
+    left: 500px;
+}
+
+.filo_sec >a {
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f5f5dc;
+    color: #8f5632;
+    cursor: pointer;
+    font-size: 10px;
+    text-decoration: none;
+    position:relative;
+    top: 10px;
+}
+
+.filo_sec >a:hover {
+    background-color: #8f5632;
+    color: #f5f5dc;
+    border: 1px, solid, #333;
+}
+
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+        transform: translateX(-5000px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}

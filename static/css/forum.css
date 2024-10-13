@@ -1,0 +1,198 @@
+/* Estructura base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Estilo para el cuerpo y fondo */
+body {
+    min-height: 100vh;
+    background: url('../images/background_forum.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Estilo para la cabecera */
+header {
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background: #8f5632;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 0 100px;
+}
+
+header .navigation {
+    position: relative;
+    line-height: 50px;
+}
+
+header .navigation .menu {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    user-select: none;
+}
+
+.menu-item > a {
+    color: #F7EACC;
+    font-size: 1em;
+    text-decoration: none;
+    margin: 20px;
+    padding: 25px 0;
+}
+
+.menu-item > a:hover {
+    color: #fff;
+    transition: 0.3s;
+}
+
+/* Contenedor principal del foro */
+.forum-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Estilo para la lista de publicaciones */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Estilo para cada publicación en la lista */
+.post {
+    width: 800px;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #8f5632;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    color: #f7eacc;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para los enlaces que rodean las publicaciones */
+.post-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Estilo para los títulos y contenido de cada publicación */
+.post h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.post p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.post small {
+    font-size: 0.9em;
+}
+
+/* Estilo para la sección de comentarios */
+.comments-section {
+    margin-top: 20px;
+    width: 800px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para cada comentario */
+.comment {
+    width: 700px;
+    max-width: 700px;
+    padding: 15px;
+    margin: 15px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f7eacc;
+    position: relative;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    color: #333;
+}
+
+/* Efecto de transición para elementos */
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+        transform: translateX(-500px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+/* Cabecera del título principal */
+h1 {
+    margin: 20px 0;
+    font-size: 3rem;
+    line-height: 1.2;
+    color: #8f5632;
+    text-align: center;
+}
+
+/* Ajuste de elementos al cargar */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.post-add {
+    text-decoration: none;
+    color: #8f5632;
+    background-color: #F7EACC;
+    width: 800px;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid #8f5632;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    position: relative;
+}
+
+.post-add:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Animación para elementos que aparecen */
+.post, .comment {
+    animation: slideIn 0.75s;
+}
+
+/* Margen en la parte superior para el contenido */
+.forum-container {
+    padding-top: 150px;  /* Espacio extra para evitar solapamiento con el header */
+}

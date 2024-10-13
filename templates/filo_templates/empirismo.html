@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empirismo</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="navigation">
+        <ul class="menu">
+            <li class="menu-item"><h1>El marco filosófico del Empirismo</h1></li>
+            <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+            <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+            <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+            <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+  </header>
+  
+  <main>
+    <section>
+      <br><br><h2>Sobre el Empirismo</h2>
+      <p>El Empirismo es una corriente filosófica que sostiene que todo conocimiento proviene de la experiencia sensorial. Los empiristas argumentan que nuestras ideas y conceptos se basan en la observación del mundo externo y en las sensaciones que percibimos a través de nuestros sentidos.</p>
+      <p>Esta corriente filosófica se opone al Racionalismo, que afirma que el conocimiento puede ser adquirido a través del uso de la razón de manera independiente de la experiencia. El Empirismo fue una de las doctrinas clave durante la filosofía moderna.</p>
+    </section>
+
+    <section class="quotes">
+      <h2>Citas Famosas</h2>
+      <blockquote> "No hay nada en el intelecto que no haya estado antes en los sentidos." - John Locke </blockquote>
+      <blockquote> "El conocimiento depende enteramente de la experiencia y no hay ideas innatas." - David Hume </blockquote>
+    </section>
+
+    <section>
+      <h2>Autores y Filósofos Emblemáticos</h2>
+      <p>Algunos de los filósofos más destacados de la escuela empirista son:</p>
+      <ul>
+        <li>John Locke (1632-1704)</li>
+        <li>George Berkeley (1685-1753)</li>
+        <li>David Hume (1711-1776)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Recursos Recomendados</h2>
+      <p>Aquí tienes algunos recursos valiosos sobre el Empirismo:</p>
+      <ul>
+        <li>Libro: <a href="https://escriturayverdad.cl/wp-content/uploads/Filosofia/ENTENDIMIENTOHUMANO.pdf">Ensayo sobre el entendimiento humano</a> - John Locke</li>
+        <li>Libro: <a href="http://23118.psi.uba.ar/academica/carrerasdegrado/psicologia/informacion_adicional/obligatorias/034_historia_2/Archivos/Hume_tratado.pdf">Tratado sobre la naturaleza humana</a> - David Hume</li>
+        <li>Libro: <a href="http://www.heortiz.net/ampag/berkeley.pdf">Principios del conocimiento humano</a> - George Berkeley</li>
+      </ul>
+    </section>
+
+    <section class="word-search">
+        <h2>Sopa de letras: Filosofía Empirista</h2>
+        <p>Encuentra las siguientes palabras relacionadas con el empirismo:</p>
+        <ul id="word-list">
+            <li>LOCKE</li>
+            <li>HUME</li>
+            <li>RAZON</li>
+            <li>BERKELEY</li>
+            <li>LOGOS</li>
+        </ul>
+        <div id="word-grid"></div>
+        <p id="status"></p>
+    </section>
+    
+    <script>
+        const words = ["LOCKE", "HUME", "RAZON", "BERKELEY", "LOGOS"]; //LISTO
+        const gridSize = 10;
+        let selectedCells = [];
+        let foundWords = [];
+    
+        const wordGrid = document.getElementById('word-grid');
+        const status = document.getElementById('status');
+    
+        const grid = [
+            ['L', 'O', 'C', 'K', 'E', 'A', 'B', 'C', 'D', 'R'],
+            ['X', 'Y', 'Z', 'H', 'U', 'M', 'W', 'A', 'B', 'A'],
+            ['E', 'X', 'P', 'E', 'R', 'I', 'E', 'N', 'C', 'Z'],
+            ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'U', 'O'],
+            ['B', 'E', 'R', 'K', 'E', 'L', 'E', 'Y', 'H', 'N'],
+            ['K', 'L', 'O', 'C', 'K', 'A', 'R', 'M', 'S', 'Q'],
+            ['D', 'E', 'S', 'F', 'G', 'H', 'I', 'O', 'C', 'M'],
+            ['L', 'C', 'J', 'K', 'A', 'B', 'G', 'G', 'H', 'I'],
+            ['C', 'O', 'N', 'O', 'C', 'O', 'M', 'I', 'E', 'N'],
+            ['T', 'O', 'B', 'C', 'L', 'F', 'E', 'M', 'U', 'H']
+        ];
+    
+        // Función para crear la cuadrícula
+        function createGrid() {
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    const cell = document.createElement('div');
+                    cell.textContent = grid[i][j];
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    cell.addEventListener('click', selectCell);
+                    wordGrid.appendChild(cell);
+                }
+            }
+        }
+    
+        // Función para seleccionar una celda
+        function selectCell() {
+            const row = this.dataset.row;
+            const col = this.dataset.col;
+    
+            if (this.classList.contains('selected')) {
+                this.classList.remove('selected');
+                selectedCells = selectedCells.filter(cell => cell !== `${row},${col}`);
+            } else {
+                this.classList.add('selected');
+                selectedCells.push(`${row},${col}`);
+            }
+    
+            checkWord();
+        }
+    
+        // Función para comprobar si se ha encontrado una palabra
+        function checkWord() {
+            let selectedWord = selectedCells.map(cell => {
+                const [row, col] = cell.split(',');
+                return grid[row][col];
+            }).join('');
+    
+            if (words.includes(selectedWord)) {
+                foundWords.push(selectedWord);
+                selectedCells.forEach(cell => {
+                    const [row, col] = cell.split(',');
+                    const gridCell = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+                    gridCell.classList.add('found');
+                });
+    
+                selectedCells = [];
+                status.textContent = `¡Encontraste la palabra: ${selectedWord}!`;
+                if (foundWords.length === words.length) {
+                    status.textContent = "¡Felicidades! Has encontrado todas las palabras.";
+                }
+            }
+        }
+    
+        createGrid();
+    </script>
+    
+  </main>
+</body>
+</html>

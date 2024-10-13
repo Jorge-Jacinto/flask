@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    font-family:"Poppins", sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    min-height: 100vh;
+    background: url('../images/background_dashboard.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.dash_welcome {
+    width: 500px;
+    height: 100px;
+    position: relative;
+    top: -220px;
+    left: 30px;
+    font-size: 30px;
+}
+
+.logout {
+    width: 300px;
+    height: 100px;
+    text-decoration: none;
+    padding: 10px;
+    position: relative;
+    top: 250px;
+    right: 580px;
+    background: #8f5632;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 25px;
+    color: #fff;
+    font-weight: 600;
+    opacity: 0.6;
+}
+
+.logout:hover {
+    background: #fff;
+    color: #333;
+}
+
+.message_text {
+    position: relative;
+    height: 50px;
+    width: 100px;
+    margin: 30px 0;
+    left: -200px;
+    top: -180px;
+}
+
+.message_text input {
+    width: 700px;
+    height: 50px;
+    background: #8f5632;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+    opacity: 0.6;
+}
+
+::placeholder {
+    color: #F7EACC;
+}
+
+.analyze_btn {
+    position: relative;
+    width: 50px;
+    height: 30px;
+    top: -182px;
+    left: 150px;
+    opacity: 0.3;
+}

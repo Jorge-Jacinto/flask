@@ -1,0 +1,105 @@
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/register.css')}}">{% endblock %}
+{% block body %}
+<div class="container">
+        <!-- Sección 1 -->
+        <div class="section active" id="section-1">
+            <h1>Pregunta 9(1/3): ¿Cuál es su perspectiva sobre la naturaleza de la realidad?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Se basa fundamentalmente en formas o ideales, siendo el mundo material una mera sombra." value='1'> 
+                Se basa fundamentalmente en formas o ideales, siendo el mundo material una mera sombra.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Es racional y está ordenada por leyes naturales, y nuestro entendimiento debe alinearse con esta estructura racional." value='4'> 
+                Es racional y está ordenada por leyes naturales, y nuestro entendimiento debe alinearse con esta estructura racional.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="La realidad se comprende a través de la experiencia y la razón humanas, y se hace hincapié en la importancia de los valores humanos y la búsqueda del conocimiento." value='8'> 
+                La realidad se comprende a través de la experiencia y la razón humanas, y se hace hincapié en la importancia de los valores humanos y la búsqueda del conocimiento.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Se experimenta a través del placer y el dolor, y su naturaleza se entiende en términos de su impacto en el bienestar humano."value='10'> 
+                Se experimenta a través del placer y el dolor, y su naturaleza se entiende en términos de su impacto en el bienestar humano.<br>
+            </label>
+            <div class="button-container">
+                <button onclick="nextSection(1, 2)">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Sección 2 -->
+        <div class="section" id="section-2">
+            <h1>Pregunta 9(2/3): ¿Cuál es su perspectiva sobre la naturaleza de la realidad?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+
+            <label class="option">
+                <input type="radio" name="answer2" data-text="La realidad es una combinación de forma y materia, donde las sustancias se definen por su potencial para alcanzar sus fines inherentes." value='2'> 
+                La realidad es una combinación de forma y materia, donde las sustancias se definen por su potencial para alcanzar sus fines inherentes..<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="La realidad existe independientemente de nuestras percepciones, y nuestros sentidos y nuestra razón nos permiten comprender su naturaleza objetiva." value='5'> 
+                La realidad existe independientemente de nuestras percepciones, y nuestros sentidos y nuestra razón nos permiten comprender su naturaleza objetiva.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="La realidad es subjetiva y está definida por las experiencias individuales, y cada persona crea su propio significado y esencia." value='9'> 
+                La realidad es subjetiva y está definida por las experiencias individuales, y cada persona crea su propio significado y esencia.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="La realidad carece de significado o propósito inherente, y cualquier sentido de orden o significado es construido por los seres humanos." value='11'> 
+                La realidad carece de significado o propósito inherente, y cualquier sentido de orden o significado es construido por los seres humanos.<br>
+            </label>
+
+            <div class="button-container">
+                <button onclick="prevSection(1)">Anterior</button>
+                <button onclick="nextSection(2, 3)">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Sección 3 -->
+        <div class="section" id="section-3">
+            <h1>Pregunta 9(3/3): ¿Cuál es su perspectiva sobre la naturaleza de la realidad?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+
+            <label class="option">
+                <input type="radio" name="answer3" data-text="La realidad es ante todo una construcción de la mente, formada por ideas y percepciones más que por objetos materiales independientes." value='3'> 
+                La realidad es ante todo una construcción de la mente, formada por ideas y percepciones más que por objetos materiales independientes.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="La realidad es accesible a través de la razón y el análisis lógico, y la mente es capaz de discernir su verdadera naturaleza." value='6'> 
+                La realidad es accesible a través de la razón y el análisis lógico, y la mente es capaz de discernir su verdadera naturaleza.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="La realidad se conoce a través de la experiencia sensorial y la evidencia empírica, y nuestra comprensión se forma continuamente mediante observaciones." value='7'> 
+                La realidad se conoce a través de la experiencia sensorial y la evidencia empírica, y nuestra comprensión se forma continuamente mediante observaciones.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="La realidad suele estar oscurecida por las convenciones sociales y las ilusiones, y la verdadera comprensión proviene de vivir de acuerdo con la naturaleza." value='12'> 
+                La realidad suele estar oscurecida por las convenciones sociales y las ilusiones, y la verdadera comprensión proviene de vivir de acuerdo con la naturaleza.<br>
+            </label>
+
+            <div class="button-container">
+                <button onclick="prevSection(2)">Anterior</button>
+                <button onclick="showResults()">Mostrar Resultados</button>
+            </div>
+        </div>
+
+        <!-- Sección de Resultados -->
+        <div class="section" id="section-results">
+            <h1>Respuestas Seleccionadas</h1>
+            <div id="results"></div>
+            
+            <h2>Selecciona tu respuesta final de las elegidas anteriormente:</h2>
+            <div id="final-selection"></div>
+    
+            <div class="button-container">
+                <button onclick="selectFinalAnswer()">Confirmar Respuesta Final</button>
+            </div>
+            
+            <div id="final-result" style="display:none;">
+                <h3>Respuesta Final Seleccionada:</h3>
+                <p id="final-answer"></p>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/register9.js') }}"></script>
+{% endblock %}

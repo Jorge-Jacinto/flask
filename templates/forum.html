@@ -1,0 +1,33 @@
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/forum.css')}}">{% endblock %}
+{% block body %}
+    <header>
+        <div class="navigation">
+            <ul class="menu">
+                <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+                <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+                <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+                <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="forum-container">
+        <a href="{{ url_for('add_post') }}" class="post-add" >Crear una nueva publicación</a>
+        <ul>
+        {% for post in posts %}
+            <li>
+                <!-- Hacemos que el enlace abarque todo el div de la publicación -->
+                <a href="{{ url_for('post_details', post_id=post[6]) }}" class="post-link">
+                    <div class="post">
+                        <h2>{{ post[1] }}</h2>
+                        <p>{{ post[2] }}</p>
+                        <p>{{ post[3] }} </p>
+                        <p>Este comentario es: {{post[5]}}</p>
+                        <small>Publicado por {{ post[0] }} el {{ post[4] }}</small>
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,187 @@
+/* Estructura base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Fondo del cuerpo */
+body {
+    min-height: 100vh;
+    background: url('../images/background_forum.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Cabecera */
+header {
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background: #8f5632;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 0 100px;
+}
+
+header .navigation {
+    position: relative;
+    line-height: 50px;
+}
+
+header .navigation .menu {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    user-select: none;
+}
+
+.menu-item > a {
+    color: #F7EACC;
+    font-size: 1em;
+    text-decoration: none;
+    margin: 20px;
+    padding: 25px 0;
+}
+
+.menu-item > a:hover {
+    color: #fff;
+    transition: 0.3s;
+}
+
+/* Contenedor principal */
+.forum-container {
+    margin-top: 150px; /* Espacio adicional para evitar solapamiento */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Publicación principal */
+.post {
+    width: 800px;
+    padding: 25px;
+    margin: 20px 0;
+    background-color: #8f5632;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    color: #f7eacc;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Título de la publicación principal */
+.post h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #f7eacc; /* Color nuevo para el título */
+}
+
+/* Estilo para los párrafos del post */
+.post p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #f7eacc; /* Mantiene el color original */
+}
+
+/* Información adicional del post */
+.post small {
+    font-size: 0.9em;
+}
+
+/* Sección para agregar un comentario */
+.add-comment {
+    width: 800px;
+    padding: 20px;
+    margin: 20px 0;
+    background: rgba(247, 234, 204, 0.9);  /* Fondo ligeramente más claro */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Estilo del textarea */
+textarea {
+    width: 100%;
+    height: 80px;  /* Altura ajustada */
+    padding: 15px;
+    border: 2px solid #8f5632;
+    border-radius: 10px;
+    background-color: #ffffff;
+    resize: vertical; /* Permite cambiar el tamaño solo verticalmente */
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    margin-bottom: 15px;
+    line-height: 1.4; /* Ajuste de altura de línea para mejor legibilidad */
+    word-wrap: break-word; /* Ajusta las líneas para palabras largas */
+    transition: border 0.3s ease;
+}
+
+/* Efecto al hacer clic en el textarea */
+textarea:focus {
+    border: 2px solid #8f5632;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón para enviar comentario */
+.submit-comment {
+    padding: 10px 20px;
+    background-color: #8f5632;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-weight: bold;
+}
+
+.submit-comment:hover {
+    background-color: #6d4325;
+}
+
+/* Sección de comentarios */
+.comments-section {
+    width: 800px;
+    padding: 20px;
+    margin: 20px 0;
+    background: rgba(247, 234, 204, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo de cada comentario */
+.comment {
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 2px solid #8f5632;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #333;
+    word-wrap: break-word; /* Ajuste de texto para comentarios largos */
+}
+
+/* Títulos */
+h1, h2, h3 {
+    color: #8f5632;
+    margin-bottom: 15px;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.5em;
+}

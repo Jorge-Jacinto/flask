@@ -1,0 +1,105 @@
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/register.css')}}">{% endblock %}
+{% block body %}
+<div class="container">
+        <!-- Sección 1 -->
+        <div class="section active" id="section-1">
+            <h1>Pregunta 8(1/3): ¿Cómo abordas los dilemas éticos que implican valores en conflicto?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Busco la forma de alinear las decisiones con las verdades y principios más elevados." value='1'> 
+                Busco la forma de alinear las decisiones con las verdades y principios más elevados.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Aplico la razón para preocuparme solo por lo que está bajo mi control." value='4'> 
+                Aplico la razón para preocuparme solo por lo que está bajo mi control.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Me esfuerzo por encontrar una solución compasiva y empática." value='8'> 
+                Me esfuerzo por encontrar una solución compasiva y empática.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Evalúo las posibles consecuencias de placer y dolor, buscando una resolución que maximice la satisfacción y el bienestar general."value='10'> 
+                Evalúo las posibles consecuencias de placer y dolor, buscando una resolución que maximice la satisfacción y el bienestar general.<br>
+            </label>
+            <div class="button-container">
+                <button onclick="nextSection(1, 2)">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Sección 2 -->
+        <div class="section" id="section-2">
+            <h1>Pregunta 8(2/3): ¿Cómo abordas los dilemas éticos que implican valores en conflicto?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+
+            <label class="option">
+                <input type="radio" name="answer2" data-text="Analizo y me esfuerzo por encontrar una solución equilibrada que satisfaga mi potencial." value='2'> 
+                Analizo y me esfuerzo por encontrar una solución equilibrada que satisfaga mi potencial.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="Considero los hechos objetivos buscando una solución basada en la naturaleza del mundo y la experiencia humana.." value='5'> 
+                Considero los hechos objetivos buscando una solución basada en la naturaleza del mundo y la experiencia humana.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="Tomo una decisión que sea auténtica para mis propios principios y experiencias." value='9'> 
+                Tomo una decisión que sea auténtica para mis propios principios y experiencias.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="Tomo una decisión basada en preferencias personales o consideraciones pragmáticas." value='11'> 
+                Tomo una decisión basada en preferencias personales o consideraciones pragmáticas.<br>
+            </label>
+
+            <div class="button-container">
+                <button onclick="prevSection(1)">Anterior</button>
+                <button onclick="nextSection(2, 3)">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Sección 3 -->
+        <div class="section" id="section-3">
+            <h1>Pregunta 8(3/3): ¿Cómo abordas los dilemas éticos que implican valores en conflicto?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+
+            <label class="option">
+                <input type="radio" name="answer3" data-text="Me esfuerzo por tomar decisiones que se alineen con las verdades últimas y el yo ideal." value='3'> 
+                Me esfuerzo por tomar decisiones que se alineen con las verdades últimas y el yo ideal.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="Utilizo el razonamiento lógico para sopesar los valores en conflicto y llegar a una decisión coherente y justificada por la razón." value='6'> 
+                Utilizo el razonamiento lógico para sopesar los valores en conflicto y llegar a una decisión coherente y justificada por la razón.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="Busco una resolución práctica basada en los efectos observados." value='7'> 
+                Busco una resolución práctica basada en los efectos observados.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="Cuestiono las normas y convenciones sociales subyacentes al dilema, buscando una solución que sea fiel a una versión de vida natural." value='12'> 
+                Cuestiono las normas y convenciones sociales subyacentes al dilema, buscando una solución que sea fiel a una versión de vida natural.<br>
+            </label>
+
+            <div class="button-container">
+                <button onclick="prevSection(2)">Anterior</button>
+                <button onclick="showResults()">Mostrar Resultados</button>
+            </div>
+        </div>
+
+        <!-- Sección de Resultados -->
+        <div class="section" id="section-results">
+            <h1>Respuestas Seleccionadas</h1>
+            <div id="results"></div>
+            
+            <h2>Selecciona tu respuesta final de las elegidas anteriormente:</h2>
+            <div id="final-selection"></div>
+    
+            <div class="button-container">
+                <button onclick="selectFinalAnswer()">Confirmar Respuesta Final</button>
+            </div>
+            
+            <div id="final-result" style="display:none;">
+                <h3>Respuesta Final Seleccionada:</h3>
+                <p id="final-answer"></p>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/register8.js') }}"></script>
+{% endblock %}

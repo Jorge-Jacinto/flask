@@ -1,0 +1,105 @@
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/register.css')}}">{% endblock %}
+{% block body %}
+<div class="container">
+        <!-- Sección 1 -->
+        <div class="section active" id="section-1">
+            <h1>Pregunta 5(1/3): ¿Cuál es tu postura sobre la existencia de un poder superior o deidad?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Estoy convencido en la existencia de formas superiores o ideales que podrían interpretarse como una forma de poder superior, que guía la estructura de la realidad." value='1'> 
+                Estoy convencido en la existencia de formas superiores o ideales que podrían interpretarse como una forma de poder superior, que guía la estructura de la realidad.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Acepto el orden racional y providencial del universo, a menudo personificado como una forma de razón divina más allá de una entidad." value='4'> 
+                Acepto el orden racional y providencial del universo, a menudo personificado como una forma de razón divina más allá de una entidad.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Me centro en el potencial humano y la ética sin necesidad de invocar un poder superior o una deidad." value='8'> 
+                Me centro en el potencial humano y la ética sin necesidad de invocar un poder superior o una deidad.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer1" data-text="Me centro generalmente en la experiencia personal y los resultados prácticos más que en las creencias metafísicas."value='10'> 
+                Me centro generalmente en la experiencia personal y los resultados prácticos más que en las creencias metafísicas.<br>
+            </label>
+            <div class="button-container">
+                <button onclick="nextSection(1, 2)">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Sección 2 -->
+        <div class="section" id="section-2">
+            <h1>Pregunta 5(2/3): ¿Cuál es tu postura sobre la existencia de un poder superior o deidad?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+
+            <label class="option">
+                <input type="radio" name="answer2" data-text="Hago reconocimiento personal de un primer motor o causa primera, una fuente fundamental de movimiento y orden en el universo." value='2'> 
+                Hago reconocimiento personal de un primer motor o causa primera, una fuente fundamental de movimiento y orden en el universo.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="La existencia de un poder superior la considero en términos de su evidencia objetiva y del orden del mundo natural, como pruebas de la existencia." value='5'> 
+                La existencia de un poder superior la considero en términos de su evidencia objetiva y del orden del mundo natural, como pruebas de la existencia.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="Me cuestiono la existencia de un poder superior, haciendo hincapié en la libertad y la responsabilidad individuales en un universo potencialmente indiferente a la humanidad." value='9'> 
+                Me cuestiono la existencia de un poder superior, haciendo hincapié en la libertad y la responsabilidad individuales en un universo potencialmente indiferente a la humanidad.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer2" data-text="Soy escéptico respecto a la existencia de un poder superior, considero estos conceptos como construcciones humanas carentes de significado inherente." value='11'> 
+                Soy escéptico respecto a la existencia de un poder superior, considero estos conceptos como construcciones humanas carentes de significado inherente.<br>
+            </label>
+
+            <div class="button-container">
+                <button onclick="prevSection(1)">Anterior</button>
+                <button onclick="nextSection(2, 3)">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Sección 3 -->
+        <div class="section" id="section-3">
+            <h1>Pregunta 5(3/3): ¿Cuál es tu postura sobre la existencia de un poder superior o deidad?</h1>
+            <p>¿Cuál es tu respuesta a esta pregunta?</p>
+
+            <label class="option">
+                <input type="radio" name="answer3" data-text="Suelo unirla a la creencia en una realidad última de las ideas o la conciencia." value='3'> 
+                Suelo unirla a la creencia en una realidad última de las ideas o la conciencia.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="La abordo a través del razonamiento lógico y a menudo la examino en busca de coherencia y necesidad." value='6'> 
+                La abordo a través del razonamiento lógico y a menudo la examino en busca de coherencia y necesidad.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="Yo suelo basarla en evidencias o en la falta de ellas." value='7'> 
+                Yo suelo basarla en evidencias o en la falta de ellas.<br>
+            </label>
+            <label class="option">
+                <input type="radio" name="answer3" data-text="Soy escéptico ante las creencias religiosas convencionales, abogo por el retorno a una forma de vida natural y racional sin depender de deidades." value='12'> 
+                Soy escéptico ante las creencias religiosas convencionales, abogo por el retorno a una forma de vida natural y racional sin depender de deidades..<br>
+            </label>
+
+            <div class="button-container">
+                <button onclick="prevSection(2)">Anterior</button>
+                <button onclick="showResults()">Mostrar Resultados</button>
+            </div>
+        </div>
+
+        <!-- Sección de Resultados -->
+        <div class="section" id="section-results">
+            <h1>Respuestas Seleccionadas</h1>
+            <div id="results"></div>
+            
+            <h2>Selecciona tu respuesta final de las elegidas anteriormente:</h2>
+            <div id="final-selection"></div>
+    
+            <div class="button-container">
+                <button onclick="selectFinalAnswer()">Confirmar Respuesta Final</button>
+            </div>
+            
+            <div id="final-result" style="display:none;">
+                <h3>Respuesta Final Seleccionada:</h3>
+                <p id="final-answer"></p>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/register5.js') }}"></script>
+{% endblock %}
