@@ -160,8 +160,8 @@ def register10():
         register_list.append(data)
         for i in register_list:
             print(i)
-    else:
-        return render_template('register10.html')
+    # Asegúrate de devolver una respuesta independientemente de si se añadió `data` o no
+    return render_template('register10.html')
 
 @app.route('/registerUser')
 def registerUser():
@@ -194,7 +194,7 @@ def registerUser():
 @app.route('/clasificar', methods=['GET', 'POST'])
 def clasificar():
     input_values = []
-    for value in register_list:
+    for value in register_list[:10]:  # Limitar a los primeros 10 valores
         try:
             input_values.append(float(value))
         except ValueError:
@@ -210,6 +210,16 @@ def clasificar():
             except ValueError:
                 flash(f"Valor inválido para feature{i}: {valor}")
                 return redirect(url_for('dashboard'))
+
+    # Limitar a 10 valores en caso de que se hayan agregado más
+    input_values = input_values[:10]  
+
+    nuevo_input = np.array([input_values])
+    
+    # Asegúrate de que el número de valores coincida con las columnas de X_train
+    if len(input_values) != 10:
+        flash("El número de entradas no es válido. Asegúrate de ingresar exactamente 10 valores.")
+        return redirect(url_for('dashboard'))
 
 
     nuevo_input = np.array([input_values])
