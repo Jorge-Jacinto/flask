@@ -24,7 +24,6 @@ k = 5
 knn_manual = KNNManual(k=k)
 knn_manual.fit(X_train.values, y_train)
 
-
 app = Flask(__name__)
 app.secret_key = 'my_secret'
 register_list = []
