@@ -52,7 +52,7 @@ def login():
         # Checa si se está logueando a registrando un usuario
         if len(values) > 2:
             cursor = db.database.cursor()
-            sql = 'SELECT * FROM users WHERE user = (%s) AND userPassword = (%s)'
+            sql = 'SELECT * FROM users WHERE user1 = (%s) AND userPassword = (%s)'
             data = (values['username'], values['password'])
             cursor.execute(sql, data)
             row = cursor.fetchone()
@@ -63,7 +63,7 @@ def login():
                 return redirect(url_for('register1'))
         else:
             cursor = db.database.cursor()
-            sql = 'SELECT idUsers, user, userPassword FROM users WHERE user = (%s) AND userPassword = (%s)'
+            sql = 'SELECT idUsers, user1, userPassword FROM users WHERE user1 = (%s) AND userPassword = (%s)'
             data = (values['username'], values['password'])
             cursor.execute(sql, data)
             row = cursor.fetchone()
@@ -166,13 +166,13 @@ def register10():
 @app.route('/registerUser')
 def registerUser():
     cursor = db.database.cursor()
-    sql = "INSERT INTO users (userName, userLastName, user, userPassword) VALUES (%s, %s, %s, %s)"
+    sql = "INSERT INTO users (userName, userLastName, user1, userPassword) VALUES (%s, %s, %s, %s)"
     data = (values['name'], values['second_name'], values['username'], values['password'])
     cursor.execute(sql, data)
     db.database.commit()
 
     # Recuperar el 'id_usuario' del usuario recién insertado usando su 'usuario'
-    sql_get_id = "SELECT idUsers FROM users WHERE user = %s"
+    sql_get_id = "SELECT idUsers FROM users WHERE user1 = %s"
     cursor.execute(sql_get_id, (values['username'],))
     id_usuario = cursor.fetchone()[0]
     
@@ -255,7 +255,7 @@ def clasificar():
 @app.route('/forum', methods=['GET', 'POST'])
 def forum():
     cursor = db.database.cursor()
-    sql = 'SELECT users.user,title, body, filo_school, date, nlp_result, posts.idPosts from posts JOIN users ON posts.idUsersP = users.idUsers'
+    sql = 'SELECT users.user1,title, body, filo_school, date, nlp_result, posts.idPosts from posts JOIN users ON posts.idUsersP = users.idUsers'
     cursor.execute(sql)
     posts = cursor.fetchall()
     return render_template('forum.html', posts=posts)
@@ -288,7 +288,7 @@ def post_details(post_id):
     cursor = db.database.cursor()
 
     # Obtener la publicación específica
-    cursor.execute('SELECT users.user, title, body, date, nlp_result, idPosts FROM posts JOIN users ON posts.idUsersP = users.idUsers WHERE posts.idPosts = %s', (post_id,))
+    cursor.execute('SELECT users.user1, title, body, date, nlp_result, idPosts FROM posts JOIN users ON posts.idUsersP = users.idUsers WHERE posts.idPosts = %s', (post_id,))
     post = cursor.fetchone()
 
     # Obtener todos los comentarios de la publicación
@@ -326,7 +326,7 @@ def inicio():
     user_id = session['idUser']  # Simulación del ID de usuario (debes cambiarlo según corresponda)
     cursor = db.database.cursor()
     # Consulta para obtener los detalles del usuario y su clase filosófica
-    cursor.execute('SELECT u.userName, u.userLastName,u.user, i.class FROM users u, indexes i WHERE u.idUsers = i.idUsers AND u.idUsers = (%s)', (user_id,))
+    cursor.execute('SELECT u.userName, u.userLastName,u.user1, i.class FROM users u, indexes i WHERE u.idUsers = i.idUsers AND u.idUsers = (%s)', (user_id,))
     user_info = cursor.fetchone()
 
 
