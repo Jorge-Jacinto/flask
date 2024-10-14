@@ -301,7 +301,7 @@ def post_details(post_id):
     post = cursor.fetchone()
 
     # Obtener todos los comentarios de la publicación
-    cursor.execute('SELECT comments.comment, comments.date, users.user FROM comments JOIN users ON comments.idUsersC = users.idUsers WHERE comments.idPostsC = %s ORDER BY comments.date', (post_id,))
+    cursor.execute('SELECT comments.comment, comments.date, users.user1 FROM comments JOIN users ON comments.idUsersC = users.idUsers WHERE comments.idPostsC = %s ORDER BY comments.date', (post_id,))
     comments = cursor.fetchall()
 
     # Renderizar la plantilla con la publicación y los comentarios
