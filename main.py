@@ -164,8 +164,9 @@ def register10():
     # Asegúrate de devolver una respuesta independientemente de si se añadió `data` o no
     return render_template('register10.html')
 
-@app.route('/registerUser')
+@app.route('/registerUser', methods=['GET', 'POST'])
 def registerUser():
+    db.database.reconnect()
     cursor = db.database.cursor()
     sql = "INSERT INTO users (userName, userLastName, user1, userPassword) VALUES (%s, %s, %s, %s)"
     data = (values['name'], values['second_name'], values['username'], values['password'])
