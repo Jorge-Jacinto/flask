@@ -48,6 +48,8 @@ def login():
     if request.method == 'POST':
         global values
         values = {key: val for key, val in request.form.items()}
+        db.database.reconnect()
+        
         # Checa si se está logueando a registrando un usuario
         if len(values) > 2:
             cursor = db.database.cursor()
