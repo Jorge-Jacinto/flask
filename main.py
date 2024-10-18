@@ -212,6 +212,7 @@ def registerIndex():
 
     return redirect(url_for('clasificar'))
 
+
 @app.route('/clasificar', methods=['GET', 'POST'])
 def clasificar():
     input_values = []
