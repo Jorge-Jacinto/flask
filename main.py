@@ -51,46 +51,47 @@ def login():
 
         cursor = db.database.cursor()
 
-            # Checa si se está logueando o registrando un usuario
-            if len(values) > 2:
-                sql = 'SELECT * FROM users WHERE user1 = (%s) AND userPassword = (%s)'
-                data = (values['username'], values['password'])
-                cursor.execute(sql, data)
-                row = cursor.fetchone()
+        # Checa si se está logueando o registrando un usuario
+        if len(values) > 2:
+            sql = 'SELECT * FROM users WHERE user1 = (%s) AND userPassword = (%s)'
+            data = (values['username'], values['password'])
+            cursor.execute(sql, data)
+            row = cursor.fetchone()
 
-                if row:
-                    flash('¡Usuario Ya Registrado!')
-                    return redirect(url_for('login'))
-                else:
-                    return redirect(url_for('registerUser'))
+            if row:
+                flash('¡Usuario Ya Registrado!')
+                return redirect(url_for('login'))
             else:
-                # Verifica si el usuario existe
-                sql = 'SELECT idUsers, user1, userPassword FROM users WHERE user1 = (%s) AND userPassword = (%s)'
-                data = (values['username'], values['password'])
-                cursor.execute(sql, data)
-                row = cursor.fetchone()
+                return redirect(url_for('registerUser'))
+        else:
+            # Verifica si el usuario existe
+            sql = 'SELECT idUsers, user1, userPassword FROM users WHERE user1 = (%s) AND userPassword = (%s)'
+            data = (values['username'], values['password'])
+            cursor.execute(sql, data)
+            row = cursor.fetchone()
 
-                if row:
-                    # Guarda el id y el username en la sesión
-                    session['username'] = values['username']
-                    session['idUser'] = row[0]
+            if row:
+                # Guarda el id y el username en la sesión
+                session['username'] = values['username']
+                session['idUser'] = row[0]
 
-                    # Verifica si hay un registro en la tabla 'indexes' para el usuario
-                    sql_check_indexes = 'SELECT idUsers FROM indexes WHERE idUsers = %s'
-                    cursor.execute(sql_check_indexes, (row[0],))
-                    index_row = cursor.fetchone()
+                # Verifica si hay un registro en la tabla 'indexes' para el usuario
+                sql_check_indexes = 'SELECT idUsers FROM indexes WHERE idUsers = %s'
+                cursor.execute(sql_check_indexes, (row[0],))
+                index_row = cursor.fetchone()
 
-                    if index_row:
-                        # Si hay un registro en 'indexes', redirige al foro
-                        return redirect(url_for('forum'))
-                    else:
-                        # Si no hay un registro, redirige a la página de registro 1
-                        return redirect(url_for('register1'))
+                if index_row:
+                    # Si hay un registro en 'indexes', redirige al foro
+                    return redirect(url_for('forum'))
                 else:
-                    flash('¡Datos Incorrectos!')
-                    return redirect(url_for('login'))
+                    # Si no hay un registro, redirige a la página de registro 1
+                    return redirect(url_for('register1'))
+            else:
+                flash('¡Datos Incorrectos!')
+                return redirect(url_for('login'))
 
     return render_template('login.html')
+
 
 
 @app.route('/registerUser', methods=['GET', 'POST'])
