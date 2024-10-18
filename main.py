@@ -49,11 +49,6 @@ def login():
         global values
         values = {key: val for key, val in request.form.items()}
 
-        try:
-            # Verifica si la conexión está disponible
-            if db.database.is_connected() is False:
-                db.database.reconnect()  # Reconecta si la conexión no está activa
-
             cursor = db.database.cursor()
 
             # Checa si se está logueando o registrando un usuario
@@ -94,16 +89,6 @@ def login():
                 else:
                     flash('¡Datos Incorrectos!')
                     return redirect(url_for('login'))
-
-        except mysql.connector.Error as err:
-            # Manejo de errores en la conexión con la base de datos
-            print(f"Error: {err}")
-            flash('Error en la conexión con la base de datos. Intenta de nuevo más tarde.')
-            return redirect(url_for('login'))
-
-        finally:
-            cursor.close()  # Cerrar el cursor
-            db.database.close()  # Cerrar la conexión a la base de datos si es necesario
 
     return render_template('login.html')
 
