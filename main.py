@@ -48,9 +48,8 @@ def login():
     if request.method == 'POST':
         global values
         values = {key: val for key, val in request.form.items()}
-        db.database.reconnect()
         
-        # Checa si se está logueando a registrando un usuario
+        # Checa si se está logueando o registrando un usuario
         if len(values) > 2:
             cursor = db.database.cursor()
             sql = 'SELECT * FROM users WHERE user1 = (%s) AND userPassword = (%s)'
@@ -61,22 +60,57 @@ def login():
                 flash('¡Usuario Ya Registrado!')
                 return redirect(url_for('login'))
             else:
-                return redirect(url_for('register1'))
+                return redirect(url_for('registerUser'))
         else:
             cursor = db.database.cursor()
+
+            # Verifica si el usuario existe
             sql = 'SELECT idUsers, user1, userPassword FROM users WHERE user1 = (%s) AND userPassword = (%s)'
             data = (values['username'], values['password'])
             cursor.execute(sql, data)
             row = cursor.fetchone()
+
             if row:
+                # Guarda el id y el username en la sesión
                 session['username'] = values['username']
                 session['idUser'] = row[0]
-                return redirect(url_for('forum'))
+
+                # Verifica si hay un registro en la tabla 'indexes' para el usuario
+                sql_check_indexes = 'SELECT idUsers FROM indexes WHERE idUsers = %s'
+                cursor.execute(sql_check_indexes, (row[0],))
+                index_row = cursor.fetchone()
+
+                if index_row:
+                    # Si hay un registro en 'indexes', redirige al foro
+                    return redirect(url_for('forum'))
+                else:
+                    # Si no hay un registro, redirige a la página de registro 1
+                    return redirect(url_for('register1'))
             else:
                 flash('¡Datos Incorrectos!')
                 return redirect(url_for('login'))
 
     return render_template('login.html')
+
+@app.route('/registerUser', methods=['GET', 'POST'])
+def registerUser():
+    cursor = db.database.cursor()
+    sql = "INSERT INTO users (userName, userLastName, user1, userPassword) VALUES (%s, %s, %s, %s)"
+    data = (values['name'], values['second_name'], values['username'], values['password'])
+    cursor.execute(sql, data)
+    db.database.commit()
+
+    # Recuperar el 'id_usuario' del usuario recién insertado usando su 'usuario'
+    sql_get_id = "SELECT idUsers FROM users WHERE user1 = %s"
+    cursor.execute(sql_get_id, (values['username'],))
+
+    id_usuario = cursor.fetchone()[0]
+    
+    session['idUser'] = id_usuario
+    session['username'] = values['username']
+
+    return redirect(url_for('register1'))
+ 
 
 @app.route('/register1', methods=['GET', 'POST'])
 def register1():
@@ -164,22 +198,10 @@ def register10():
     # Asegúrate de devolver una respuesta independientemente de si se añadió `data` o no
     return render_template('register10.html')
 
-@app.route('/registerUser', methods=['GET', 'POST'])
-def registerUser():
-    db.database.reconnect()
+@app.route('/registerIndexes', methods=['GET', 'POST'])
+def registerIndex():
     cursor = db.database.cursor()
-    sql = "INSERT INTO users (userName, userLastName, user1, userPassword) VALUES (%s, %s, %s, %s)"
-    data = (values['name'], values['second_name'], values['username'], values['password'])
-    cursor.execute(sql, data)
-    db.database.commit()
-
-    # Recuperar el 'id_usuario' del usuario recién insertado usando su 'usuario'
-    sql_get_id = "SELECT idUsers FROM users WHERE user1 = %s"
-    cursor.execute(sql_get_id, (values['username'],))
-    id_usuario = cursor.fetchone()[0]
-    
-    session['idUser'] = id_usuario
-
+    id_usuario = session['idUser']
     # Insertar los datos en la tabla 'indices' usando el 'id_usuario'
     sql2 = "INSERT INTO indexes (idUsers, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
     data2 = (id_usuario, register_list[0], register_list[1], register_list[2], register_list[3], register_list[4], register_list[5], register_list[6], register_list[7], register_list[8], register_list[9])
@@ -187,9 +209,6 @@ def registerUser():
 
     # Confirmar las operaciones en la base de datos
     db.database.commit()
-
-    # Iniciar sesión con el nombre de usuario registrado
-    session['username'] = values['username']
 
     return redirect(url_for('clasificar'))
 
