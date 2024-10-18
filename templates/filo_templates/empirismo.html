@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empirismo</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <button class="menu-button">≡</button>
+    <div class="menu-dropdown">
+      <ul>
+        <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+        <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+        <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+        <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+      </ul>
+    </div>
+    <h1>El marco filosófico del Empirismo</h1>
+  </header>
+  
+  <main>
+    <section>
+      <h2>Sobre el Racionalismo</h2>
+      <p>El empirismo sostiene que el <strong>conocimiento</strong> proviene principalmente de la <strong>experiencia</strong>, es decir, de la interacción directa con el mundo a través de los <strong>sentidos</strong>.</p>
+      <p>Según esta visión, somos como una <strong>tabula rasa</strong>, una hoja en blanco, en la cual las experiencias sensoriales dejan su huella mediante la <strong>percepción</strong> y la <strong>observación</strong> de la <strong>realidad</strong>.</p>
+      <p>Los empiristas confían en los <strong>datos</strong> recolectados a través de las <strong>impresiones</strong> sensoriales, las cuales se obtienen a través de la <strong>sensación</strong> y se procesan mediante la <strong>asociación de ideas</strong>.</p>
+      <p>Este enfoque utiliza la <strong>inducción</strong>, un método que parte de casos particulares para llegar a conclusiones generales sobre los <strong>fenómenos</strong> observados en el mundo.</p>
+      <p>La confianza en la <strong>evidencia</strong> empírica implica la necesidad de verificar los hechos a través de la <strong>observación</strong> y el <strong>experimento</strong>, lo que también lleva al empirista a adoptar un cierto <strong>escepticismo</strong> respecto a las ideas abstractas que no puedan ser verificadas en la <strong>realidad</strong>.</p>
+      <p>Esto genera una comprensión de las relaciones de <strong>causa y efecto</strong> basada en la repetición y el <strong>hábito</strong>, más que en la certeza absoluta.</p>
+      <p>Al estar basados en lo <strong>a posteriori</strong>, es decir, en el conocimiento que surge después de la experiencia, los empiristas se inclinan hacia el <strong>pragmatismo</strong> y el <strong>falsacionismo</strong>, donde la <strong>verificación</strong> o refutación de una idea se deriva de su aplicación en la práctica.</p>
+    </section>
+
+    <section class="quotes">
+      <h2>Citas Famosas</h2>
+      <blockquote> "No hay nada en el intelecto que no haya estado antes en los sentidos." - John Locke </blockquote>
+      <blockquote> "El conocimiento depende enteramente de la experiencia y no hay ideas innatas." - David Hume </blockquote>
+    </section>
+
+    <section>
+      <h2>Autores y Filósofos Emblemáticos</h2>
+      <p>Algunos de los filósofos más destacados de la escuela empirista son:</p>
+      <ul>
+        <li>John Locke (1632-1704)</li>
+        <li>George Berkeley (1685-1753)</li>
+        <li>David Hume (1711-1776)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Recursos Recomendados</h2>
+      <p>Aquí tienes algunos recursos valiosos sobre el Empirismo:</p>
+      <ul>
+        <li>Libro: <a href="https://escriturayverdad.cl/wp-content/uploads/Filosofia/ENTENDIMIENTOHUMANO.pdf">Ensayo sobre el entendimiento humano</a> - John Locke</li>
+        <li>Libro: <a href="http://23118.psi.uba.ar/academica/carrerasdegrado/psicologia/informacion_adicional/obligatorias/034_historia_2/Archivos/Hume_tratado.pdf">Tratado sobre la naturaleza humana</a> - David Hume</li>
+        <li>Libro: <a href="http://www.heortiz.net/ampag/berkeley.pdf">Principios del conocimiento humano</a> - George Berkeley</li>
+      </ul>
+    </section>
+
+    <section class="word-search">
+        <h2>Sopa de letras: Filosofía Empirista</h2>
+        <p>Encuentra las siguientes palabras relacionadas con el empirismo:</p>
+        <ul id="word-list">
+            <li>LOCKE</li>
+            <li>HUME</li>
+            <li>RAZON</li>
+            <li>BERKELEY</li>
+            <li>LOGOS</li>
+        </ul>
+        <div id="word-grid"></div>
+        <p id="status"></p>
+    </section>
+    
+    <script>
+        const words = ["LOCKE", "HUME", "RAZON", "BERKELEY", "LOGOS"]; //LISTO
+        const gridSize = 10;
+        let selectedCells = [];
+        let foundWords = [];
+    
+        const wordGrid = document.getElementById('word-grid');
+        const status = document.getElementById('status');
+    
+        const grid = [
+            ['L', 'O', 'C', 'K', 'E', 'A', 'B', 'C', 'D', 'R'],
+            ['X', 'Y', 'Z', 'H', 'U', 'M', 'W', 'A', 'B', 'A'],
+            ['E', 'X', 'P', 'E', 'R', 'I', 'E', 'N', 'C', 'Z'],
+            ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'U', 'O'],
+            ['B', 'E', 'R', 'K', 'E', 'L', 'E', 'Y', 'H', 'N'],
+            ['K', 'L', 'O', 'C', 'K', 'A', 'R', 'M', 'S', 'Q'],
+            ['D', 'E', 'S', 'F', 'G', 'H', 'I', 'O', 'C', 'M'],
+            ['L', 'C', 'J', 'K', 'A', 'B', 'G', 'G', 'H', 'I'],
+            ['C', 'O', 'N', 'O', 'C', 'O', 'M', 'I', 'E', 'N'],
+            ['T', 'O', 'B', 'C', 'L', 'F', 'E', 'M', 'U', 'H']
+        ];
+    
+        // Función para crear la cuadrícula
+        function createGrid() {
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    const cell = document.createElement('div');
+                    cell.textContent = grid[i][j];
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    cell.addEventListener('click', selectCell);
+                    wordGrid.appendChild(cell);
+                }
+            }
+        }
+    
+        // Función para seleccionar una celda
+        function selectCell() {
+            const row = this.dataset.row;
+            const col = this.dataset.col;
+    
+            if (this.classList.contains('selected')) {
+                this.classList.remove('selected');
+                selectedCells = selectedCells.filter(cell => cell !== `${row},${col}`);
+            } else {
+                this.classList.add('selected');
+                selectedCells.push(`${row},${col}`);
+            }
+    
+            checkWord();
+        }
+    
+        // Función para comprobar si se ha encontrado una palabra
+        function checkWord() {
+            let selectedWord = selectedCells.map(cell => {
+                const [row, col] = cell.split(',');
+                return grid[row][col];
+            }).join('');
+    
+            if (words.includes(selectedWord)) {
+                foundWords.push(selectedWord);
+                selectedCells.forEach(cell => {
+                    const [row, col] = cell.split(',');
+                    const gridCell = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+                    gridCell.classList.add('found');
+                });
+    
+                selectedCells = [];
+                status.textContent = `¡Encontraste la palabra: ${selectedWord}!`;
+                if (foundWords.length === words.length) {
+                    status.textContent = "¡Felicidades! Has encontrado todas las palabras.";
+                }
+            }
+        }
+    
+        createGrid();
+    </script>
+    
+    <a href="#" class="cta-button">Ir al foro</a>
+  </main>
+</body>
+</html>

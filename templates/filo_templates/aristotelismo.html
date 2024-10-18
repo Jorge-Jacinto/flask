@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aristotelismo</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <button class="menu-button">≡</button>
+    <div class="menu-dropdown">
+      <ul>
+        <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+        <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+        <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+        <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+      </ul>
+    </div>
+    <h1>El marco filosófico del Aristotelismo</h1>
+  </header>
+  
+  <main>
+    <section>
+      <h2>Sobre el Aristotelismo</h2>
+      <p>El Aristotelismo se enfoca en que la realidad existe en las cosas mismas que podemos <b>observar</b> y estudiar, no en un reino separado de ideas perfectas como propone el Platonismo.</p>
+      <p>Elementos Clave:</p>
+      <ol>
+        <li>Sustancia y forma: Las cosas están compuestas por materia (sustancia) y forma, que son indivisibles en la realidad.</li>
+        <li><b>Causalidad</b>: Todo tiene una causa y un propósito (las cuatro causas aristotélicas).</li>
+        <li><b>Potencia</b> y <b>acto</b>: Las cosas tienen potencial para cambiar y actualizarse.</li>
+        <li><b>Lógica</b>: Aquello para entender el mundo.</li>
+        <li><b>Ética</b> práctica: La virtud o (<b>justicia</b> del <b>bien</b>) y la felicidad es el resultado obtenido a través de hábitos y acciones concretas.</li>
+      </ol>   
+      <p>Un perfil aristotélico tiende a observar el <b>mundo natural</b>, para entender la <b>sustancia</b> o aquella <b>materia</b> <b>tangible</b> de la existencia.</p>
+      <p>Busca la <b>experiencia directa</b>, de aquello que se puede hacer, y el <b>razonamiento lógico</b> del <b>conocimiento práctico</b> como un fin de vida.</p>
+    </section>
+
+    <section class="quotes">
+      <h2>Citas Famosas</h2>
+      <blockquote> "El conocimiento comienza con la experiencia." - Aristóteles </blockquote>
+      <blockquote> "La excelencia no es un acto, sino un hábito." - Aristóteles </blockquote>
+    </section>
+
+    <section>
+      <h2>Autores y Filósofos Emblemáticos</h2>
+      <p>Algunos de los filósofos más destacados de la escuela aristotélica son:</p>
+      <ul>
+        <li>Aristóteles (384-322 a.C.)</li>
+        <li>Tomás de Aquino (1225-1274 d.C.)</li>
+        <li>Averroes (1126-1198 d.C.)</li>
+        <li>Albertus Magnus (1200-1280 d.C.)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Recursos Recomendados</h2>
+      <p>Aquí tienes algunos recursos valiosos sobre el Aristotelismo:</p>
+      <ul>
+        <li>Libro: "<a href="https://www.imprentanacional.go.cr/editorialdigital/libros/literatura%20universal/etica_a_nicomaco_edincr.pdf">Ética a Nicómaco</a> - de Aristóteles</li>
+        <li>Libro: "<a href="https://www.philosophia.cl/biblioteca/aristoteles/metafisica.pdf">Metafísica</a> - Aristóteles</li>
+      </ul>
+    </section>
+
+    <section class="word-search">
+        <h2>Sopa de letras: Filosofía Aristotélica</h2>
+        <p>Encuentra las siguientes palabras relacionadas con el aristotelismo:</p>
+        <ul id="word-list">
+            <li>HABITO</li>
+            <li>ETICA</li>
+            <li>LOGICA</li>
+            <li>CAUSA</li>
+            <li>TELEOLOGIA</li>
+        </ul>
+        <div id="word-grid"></div>
+        <p id="status"></p>
+    </section>
+    
+    <script>
+        const words = ["HABITO", "ETICA", "LOGICA", "CAUSA", "TELEOLOGIA"]; //LISTO
+        const gridSize = 10;
+        let selectedCells = [];
+        let foundWords = [];
+    
+        const wordGrid = document.getElementById('word-grid');
+        const status = document.getElementById('status');
+    
+        const grid = [
+            ['H', 'R', 'I', 'S', 'T', 'O', 'T', 'E', 'L', 'E'],
+            ['C', 'A', 'U', 'S', 'A', 'A', 'M', 'E', 'T', 'S'],
+            ['E', 'T', 'B', 'C', 'A', 'A', 'P', 'O', 'L', 'G'],
+            ['T', 'E', 'T', 'I', 'C', 'A', 'O', 'G', 'I', 'A'],
+            ['I', 'S', 'G', 'I', 'T', 'M', 'A', 'I', 'C', 'O'],
+            ['C', 'A', 'G', 'S', 'A', 'O', 'E', 'L', 'S', 'C'],
+            ['P', 'O', 'G', 'I', 'C', 'A', 'B', 'T', 'R', 'A'],
+            ['L', 'P', 'O', 'L', 'I', 'T', 'I', 'C', 'A', 'U'],
+            ['O', 'A', 'R', 'I', 'S', 'T', 'O', 'T', 'E', 'S'],
+            ['T', 'E', 'L', 'E', 'O', 'L', 'O', 'G', 'I', 'A']
+        ];
+    
+        function createGrid() {
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    const cell = document.createElement('div');
+                    cell.textContent = grid[i][j];
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    cell.addEventListener('click', selectCell);
+                    wordGrid.appendChild(cell);
+                }
+            }
+        }
+    
+        function selectCell() {
+            const row = this.dataset.row;
+            const col = this.dataset.col;
+            const letter = grid[row][col];
+    
+            if (this.classList.contains('selected')) {
+                this.classList.remove('selected');
+                selectedCells = selectedCells.filter(cell => cell !== `${row},${col}`);
+            } else {
+                this.classList.add('selected');
+                selectedCells.push(`${row},${col}`);
+            }
+    
+            checkWord();
+        }
+    
+        function checkWord() {
+            let selectedWord = selectedCells.map(cell => {
+                const [row, col] = cell.split(',');
+                return grid[row][col];
+            }).join('');
+    
+            if (words.includes(selectedWord)) {
+                foundWords.push(selectedWord);
+                selectedCells.forEach(cell => {
+                    const [row, col] = cell.split(',');
+                    const gridCell = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+                    gridCell.classList.add('found');
+                });
+    
+                selectedCells = [];
+                status.textContent = `¡Encontraste la palabra: ${selectedWord}!`;
+                if (foundWords.length === words.length) {
+                    status.textContent = "¡Felicidades! Has encontrado todas las palabras.";
+                }
+            }
+        }
+    
+        createGrid();
+    </script>
+    
+    <a href="{{ url_for('templates', filename='forum.html')}}" class="cta-button">Ir al foro</a>
+  </main>
+</body>
+</html>

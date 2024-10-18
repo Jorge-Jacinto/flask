@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinismo</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <button class="menu-button">≡</button>
+    <div class="menu-dropdown">
+      <ul>
+        <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+        <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+        <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+        <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+      </ul>
+    </div>
+    <h1>El marco filosófico del Cinismo</h1>
+  </header>
+  
+  <main>
+    <section>
+      <h2>Sobre el Cinismo</h2>
+      <p>El cinismo clásico es una corriente filosófica que promueve la <strong>naturalidad</strong> y una vida alineada a los principios de la misma. Se centra en la <strong>autosuficiencia</strong> y el <strong>ascetismo</strong>, tambien considerado como la pureza del alam, además se prioriza la <strong>libertad</strong> personal sobre las convenciones sociales.</p>
+      <p>Los cínicos eran conocidos por su <strong>crítica social</strong>, utilizando la <strong>parresía</strong> o la libertad de expresión para desafiar las normas establecidas. A través de la <strong>desvergüenza</strong> y la <strong>provocación</strong>, promovían el <strong>anticonvencionalismo</strong> y el rechazo a las opiniones populares.</p>
+      <p>Esta postura no solo refleja una <strong>indiferencia</strong> hacia las normas sociales, sino también un <strong>desprecio por las convenciones</strong> que limitan la autenticidad del individuo, algo acorde con el existencialismo</p>
+      <p>Una persona con pensamiento cínico busca la <strong>autarquía</strong> y da mayor valor a la <strong>sabiduría práctica</strong> que sobre la acumulación de riqueza o el poder. Rechaza cualquier forma de dominación que la aleje de su libertad esencial, así como el interés por la <strong>fama</strong>, que considera superficial.</p>
+      <p>Este enfoque lleva a una profunda <strong>indiferencia</strong> hacia los bienes materiales y las ambiciones sociales, persiguiendo una vida auténtica que no dependa de la aprobación externa. Al rechazar la <strong>riqueza</strong> y el deseo de reconocimiento, busca una existencia genuina, hacidnxo una distinción de las expectativas sociales, ya que no se necesita absolutamente nada de eso para llegar a ese fin superior,</p>
+      <p>Es importante no confundir este Cinismo clásico con el cinismo moderno, que denota una actitud de desconfianza hacia los demás.</p>
+    </section>
+
+    <section class="quotes">
+      <h2>Citas Famosas</h2>
+      <blockquote> "He arrojado mi taza, al ver a un niño beber con sus manos en el arroyo." - Diógenes de Sinope</blockquote>
+      <blockquote> "No soy un ateniense ni un griego, sino un ciudadano del mundo." - Diógenes de Sinope</blockquote>
+      <blockquote> "Si no fuera Alejandro, me gustaría ser Diógenes." - Alejandro Magno</blockquote>
+    </section>
+
+    <section>
+      <h2>Autores y Filósofos Emblemáticos</h2>
+      <p>Algunos de los filósofos más representativos del Cinismo clásico son:</p>
+      <ul>
+        <li>Diógenes de Sinope (412-323 a.C.)</li>
+        <li>Antístenes (445-365 a.C.)</li>
+        <li>Crátes de Tebas (368-288 a.C.)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Recursos Recomendados</h2>
+      <p>Aquí tienes algunos recursos valiosos sobre el Cinismo clásico:</p>
+      <ul>
+        <li>Video: <a href="https://youtu.be/yMShyIeLAKU?si=Wi_BzlZwmffxxty_">CINISMO: Filosofía de DIÓGENES - ¿Qué (no) NECESITAMOS para Alcanzar la FELICIDAD?</a> - Ram Talks</li>
+        <li>Video: <a href="https://youtu.be/ZJ8JnMIA7e0?si=yyDCDa8YG9P7UTTE">Características de la Escuela Cínica</a> - Charlando de Filosofía</li>
+        <li>Video: <a href="https://youtu.be/YS3z3suXsJE?si=7xlz2Oj4jehNFVB7">Cínicos: La escuela cínica?</a> - El Picalibro</li>
+      </ul>
+    </section>
+
+    <section class="word-search">
+        <h2>Sopa de letras: Filosofía Cínica</h2>
+        <p>Encuentra las siguientes palabras relacionadas con el Cinismo:</p>
+        <ul id="word-list">
+            <li>DIÓGENES</li>
+            <li>VIRTUD</li>
+            <li>DESPRECIO</li>
+            <li>SIMPLE</li>
+            <li>ANTÍSTENES</li>
+        </ul>
+        <div id="word-grid"></div>
+        <p id="status"></p>
+    </section>
+
+    <script>
+        const words = ["DIOGENES", "VIRTUD", "DESPRECIO", "SIMPLE", "ANTISTENES"]; // LISTO
+        const gridSize = 10;
+        let selectedCells = [];
+        let foundWords = [];
+    
+        const wordGrid = document.getElementById('word-grid');
+        const status = document.getElementById('status');
+    
+        const grid = [
+            ['D', 'I', 'O', 'G', 'E', 'N', 'E', 'S', 'C', 'F'],
+            ['V', 'P', 'R', 'T', 'U', 'D', 'A', 'B', 'C', 'D'],
+            ['S', 'I', 'M', 'P', 'L', 'I', 'C', 'I', 'D', 'A'],
+            ['A', 'U', 'R', 'O', 'S', 'U', 'F', 'I', 'C', 'I'],
+            ['E', 'N', 'C', 'T', 'A', 'B', 'S', 'K', 'L', 'M'],
+            ['A', 'N', 'T', 'I', 'S', 'T', 'E', 'N', 'E', 'S'],
+            ['V', 'I', 'R', 'T', 'U', 'D', 'C', 'A', 'D', 'E'],
+            ['S', 'I', 'M', 'P', 'L', 'E', 'C', 'I', 'T', 'Y'],
+            ['C', 'D', 'E', 'S', 'P', 'R', 'E', 'C', 'I', 'O'],
+            ['M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V']
+        ];
+    
+        
+        function createGrid() {
+            for (let i = 0; i < gridSize; i++) {
+                for (let j = 0; j < gridSize; j++) {
+                    const cell = document.createElement('div');
+                    cell.textContent = grid[i][j];
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    cell.addEventListener('click', selectCell);
+                    wordGrid.appendChild(cell);
+                }
+            }
+        }
+    
+        
+        function selectCell() {
+            const row = this.dataset.row;
+            const col = this.dataset.col;
+            const letter = grid[row][col];
+    
+            if (this.classList.contains('selected')) {
+                this.classList.remove('selected');
+                selectedCells = selectedCells.filter(cell => cell !== `${row},${col}`);
+            } else {
+                this.classList.add('selected');
+                selectedCells.push(`${row},${col}`);
+            }
+    
+            checkWord();
+        }
+    
+        // 
+        function checkWord() {
+            let selectedWord = selectedCells.map(cell => {
+                const [row, col] = cell.split(',');
+                return grid[row][col];
+            }).join('');
+    
+            if (words.includes(selectedWord)) {
+                foundWords.push(selectedWord);
+                selectedCells.forEach(cell => {
+                    const [row, col] = cell.split(',');
+                    const gridCell = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+                    gridCell.classList.add('found');
+                });
+    
+                selectedCells = [];
+                status.textContent = `¡Encontraste la palabra: ${selectedWord}!`;
+                if (foundWords.length === words.length) {
+                    status.textContent = "¡Felicidades! Has encontrado todas las palabras.";
+                }
+            }
+        }
+    
+        createGrid();
+    </script>
+
+    <a href="#" class="cta-button">Ir al foro</a>
+  </main>
+</body>
+</html>
