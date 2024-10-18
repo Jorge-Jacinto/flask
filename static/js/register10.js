@@ -99,7 +99,7 @@ function selectFinalAnswer() {
     });
     
     setTimeout(function(){
-        window.location.href = '/registerUser';
+        window.location.href = '/registerIndexes';
     }, 1000);
     
 }
