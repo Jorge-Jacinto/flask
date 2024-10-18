@@ -107,6 +107,7 @@ def login():
 
     return render_template('login.html')
 
+
 @app.route('/registerUser', methods=['GET', 'POST'])
 def registerUser():
     cursor = db.database.cursor()
