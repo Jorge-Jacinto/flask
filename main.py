@@ -111,7 +111,6 @@ def registerUser():
 
     return redirect(url_for('register1'))
  
-
 @app.route('/register1', methods=['GET', 'POST'])
 def register1():
     register_list.clear()
