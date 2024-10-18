@@ -49,7 +49,7 @@ def login():
         global values
         values = {key: val for key, val in request.form.items()}
 
-            cursor = db.database.cursor()
+        cursor = db.database.cursor()
 
             # Checa si se está logueando o registrando un usuario
             if len(values) > 2:
