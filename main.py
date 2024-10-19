@@ -83,6 +83,8 @@ def login():
                 index_row = cursor.fetchone()
 
                 cursor.close()  # Cierra el cursor después de todas las consultas
+                db.database.close()
+
 
                 if index_row:
                     # Si hay un registro en 'indexes', redirige al foro
@@ -92,6 +94,7 @@ def login():
                     return redirect(url_for('register1'))
             else:
                 cursor.close()  # Cierra el cursor
+                db.database.close()
                 flash('¡Datos Incorrectos!')
                 return redirect(url_for('login'))
 
@@ -117,7 +120,8 @@ def registerUser():
     session['idUser'] = id_usuario
     session['username'] = values['username']
 
-    cursor.close();
+    cursor.close()
+    db.database.close()
 
     return redirect(url_for('register1'))
  
@@ -218,7 +222,8 @@ def registerIndex():
 
     # Confirmar las operaciones en la base de datos
     db.database.commit()
-    cursor.close();
+    cursor.close()
+    db.database.close()
     
     return redirect(url_for('clasificar'))
 
@@ -264,6 +269,8 @@ def clasificar():
     sql2 = "UPDATE indexes SET class = %s WHERE idUsers = %s"
     data2 = (prediccion_original, id_usuario)
     cursor.execute(sql2, data2)
+    cursor.close()
+    db.database.close()
 
     db.database.commit()
     if prediccion_original == 'Platonismo':
@@ -300,7 +307,8 @@ def forum():
     sql = 'SELECT users.user1,title, body, filo_school, date, nlp_result, posts.idPosts from posts JOIN users ON posts.idUsersP = users.idUsers'
     cursor.execute(sql)
     posts = cursor.fetchall()
-    cursor.close();
+    cursor.close()
+    db.database.close()
     return render_template('forum.html', posts=posts)
 
 @app.route('/add_post', methods=['GET', 'POST'])
@@ -322,7 +330,8 @@ def add_post():
         values = (user, title, body, school, result)
         cursor.execute(sql, values)
         db.database.commit()
-        cursor.close();
+        cursor.close()
+        db.database.close()
 
         return redirect(url_for('forum'))
     return render_template('post.html')
@@ -338,7 +347,8 @@ def post_details(post_id):
     # Obtener todos los comentarios de la publicación
     cursor.execute('SELECT comments.comment, comments.date, users.user1 FROM comments JOIN users ON comments.idUsersC = users.idUsers WHERE comments.idPostsC = %s ORDER BY comments.date', (post_id,))
     comments = cursor.fetchall()
-    cursor.close();
+    cursor.close()
+    db.database.close()
 
     # Renderizar la plantilla con la publicación y los comentarios
     return render_template('post_details.html', post=post, comments=comments)
@@ -359,10 +369,12 @@ def add_comment(post_id):
         cursor.execute(sql, (post_id, session['idUser'], comentario))
         db.database.commit()
         flash('Comentario añadido correctamente.')
-        cursor.close();
+        cursor.close()
+        db.database.close()
     else:
         flash('El comentario no puede estar vacío.')
-        cursor.close();
+        cursor.close()
+        db.database.close()
     
     # Redirigir de vuelta a la página de detalles del post
     return redirect(url_for('post_details', post_id=post_id))
@@ -396,7 +408,8 @@ def inicio():
     '''
     cursor.execute(sql_posts, (user_id,))
     user_posts = cursor.fetchall()
-    cursor.close();
+    cursor.close()
+    db.database.close()
 
     return render_template('inicio.html', user_data=user_data, user_posts=user_posts)
     
