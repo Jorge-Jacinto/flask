@@ -60,8 +60,10 @@ def login():
 
             if row:
                 flash('¡Usuario Ya Registrado!')
+                cursor.close()  # Cierra el cursor después de usarlo
                 return redirect(url_for('login'))
             else:
+                cursor.close()  # Cierra el cursor
                 return redirect(url_for('registerUser'))
         else:
             # Verifica si el usuario existe
@@ -80,6 +82,8 @@ def login():
                 cursor.execute(sql_check_indexes, (row[0],))
                 index_row = cursor.fetchone()
 
+                cursor.close()  # Cierra el cursor después de todas las consultas
+
                 if index_row:
                     # Si hay un registro en 'indexes', redirige al foro
                     return redirect(url_for('forum'))
@@ -87,10 +91,12 @@ def login():
                     # Si no hay un registro, redirige a la página de registro 1
                     return redirect(url_for('register1'))
             else:
+                cursor.close()  # Cierra el cursor
                 flash('¡Datos Incorrectos!')
                 return redirect(url_for('login'))
 
     return render_template('login.html')
+
 
 
 
