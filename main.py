@@ -117,6 +117,8 @@ def registerUser():
     session['idUser'] = id_usuario
     session['username'] = values['username']
 
+    cursor.close();
+
     return redirect(url_for('register1'))
  
 @app.route('/register1', methods=['GET', 'POST'])
@@ -216,7 +218,8 @@ def registerIndex():
 
     # Confirmar las operaciones en la base de datos
     db.database.commit()
-
+    cursor.close();
+    
     return redirect(url_for('clasificar'))
 
 
@@ -297,6 +300,7 @@ def forum():
     sql = 'SELECT users.user1,title, body, filo_school, date, nlp_result, posts.idPosts from posts JOIN users ON posts.idUsersP = users.idUsers'
     cursor.execute(sql)
     posts = cursor.fetchall()
+    cursor.close();
     return render_template('forum.html', posts=posts)
 
 @app.route('/add_post', methods=['GET', 'POST'])
@@ -318,6 +322,7 @@ def add_post():
         values = (user, title, body, school, result)
         cursor.execute(sql, values)
         db.database.commit()
+        cursor.close();
 
         return redirect(url_for('forum'))
     return render_template('post.html')
@@ -333,6 +338,7 @@ def post_details(post_id):
     # Obtener todos los comentarios de la publicación
     cursor.execute('SELECT comments.comment, comments.date, users.user1 FROM comments JOIN users ON comments.idUsersC = users.idUsers WHERE comments.idPostsC = %s ORDER BY comments.date', (post_id,))
     comments = cursor.fetchall()
+    cursor.close();
 
     # Renderizar la plantilla con la publicación y los comentarios
     return render_template('post_details.html', post=post, comments=comments)
@@ -353,8 +359,10 @@ def add_comment(post_id):
         cursor.execute(sql, (post_id, session['idUser'], comentario))
         db.database.commit()
         flash('Comentario añadido correctamente.')
+        cursor.close();
     else:
         flash('El comentario no puede estar vacío.')
+        cursor.close();
     
     # Redirigir de vuelta a la página de detalles del post
     return redirect(url_for('post_details', post_id=post_id))
@@ -388,8 +396,10 @@ def inicio():
     '''
     cursor.execute(sql_posts, (user_id,))
     user_posts = cursor.fetchall()
+    cursor.close();
 
     return render_template('inicio.html', user_data=user_data, user_posts=user_posts)
+    
 @app.route('/escuelas_filo')
 def escuelas_filo():
     if 'username' in session:
@@ -461,7 +471,5 @@ def logout():
     session.pop('idUser', None)
     return redirect(url_for('login'))
 
-if __name__ == '__main__':
-    app.run(debug=True)
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv("PORT", default=5000))
