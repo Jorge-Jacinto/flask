@@ -49,7 +49,11 @@ def login():
         global values
         values = {key: val for key, val in request.form.items()}
 
-        cursor = db.database.cursor()
+        try:
+           cursor = db.database.cursor()
+        except mysql.connector.errors.OperationalError:
+           db.database.reconnect(attempts=3, delay=5)  # Intenta reconectar 3 veces con 5 segundos de intervalo
+            cursor = db.database.cursor()
 
         # Checa si se está logueando o registrando un usuario
         if len(values) > 2:
