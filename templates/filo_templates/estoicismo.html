@@ -1,37 +1,24 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estoicismo</title>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
-</head>
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/styles_pro.css')}}">{% endblock %}
+{% block body %}
 <body>
   <header>
-    <button class="menu-button">≡</button>
-    <div class="menu-dropdown">
-      <ul>
-        <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
-        <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
-        <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
-        <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
-      </ul>
+    <div class="navigation">
+        <ul class="menu">
+            <li class="menu-item"><h1>El marco filosófico del Estoicismo</h1></li>
+            <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+            <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+            <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+            <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+        </ul>
     </div>
-    <h1>El marco filosófico del Estoicismo</h1>
   </header>
   
   <main>
     <section>
-      <h2>Sobre el Estoicismo</h2>
-      <p>El objetivo principal es alcanzar la <b>felicidad</b> y la <b>tranquilidad</b> emocional a través del <b>autocontrol</b>, la <b>apatía</b>, la <b>fortaleza</b> de carácter y la <b>aceptación</b> de los eventos tal como ocurren, sin ser perturbados por las <b>emociones</b>.</p>
-      <p>Para los estoicos, el bien más elevado es la <b>virtud</b>, y todo lo demás, como la riqueza o los bienes materiales, son indiferentes.</p>
-      <p>Los filósofos estoicos creen que la razón y la <b>naturaleza</b> deben guiar nuestras acciones, y enseñan a aceptar lo que no podemos cambiar.</p>
-      <p>Una persona con una visión estoica de la vida buscaría mantener el <b>control</b> emocional y la racionalidad frente a las adversidades, aceptando que hay cosas fuera de su control.</p>
-      <p>Se esforzaría por vivir en armonía con la naturaleza, practicando la <b>autodisciplina</b> y la <b>moderación</b>.</p>
-      <p>El estoico moderno sería alguien <b>resiliente</b>, enfocado en el presente, que ve los problemas personales en un contexto más amplio y cree en la igualdad fundamental de todos los seres humanos.</p>
+      <br><br><h2>Sobre el Estoicismo</h2>
+      <p>El Estoicismo es una escuela filosófica que surgió en la Antigua Grecia alrededor del siglo III a.C. Su objetivo principal es alcanzar la felicidad y la tranquilidad emocional a través del autocontrol, la fortaleza de carácter y la aceptación de los eventos tal como ocurren, sin ser perturbados por las emociones.</p>
+      <p>Para los estoicos, el bien más elevado es la virtud, y todo lo demás, como la riqueza o la salud, son indiferentes. Los filósofos estoicos creen que la razón y la naturaleza deben guiar nuestras acciones, y enseñan a aceptar lo que no podemos cambiar.</p>
     </section>
 
     <section class="quotes">
@@ -154,7 +141,6 @@
         createGrid();
     </script>
     
-    <a href="#" class="cta-button">Ir al foro</a>
   </main>
 </body>
-</html>
+{% endblock %}

@@ -1,37 +1,24 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Humanismo</title>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
-</head>
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/styles_pro.css')}}">{% endblock %}
+{% block body %}
 <body>
   <header>
-    <button class="menu-button">≡</button>
-    <div class="menu-dropdown">
-      <ul>
-        <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
-        <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
-        <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
-        <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
-      </ul>
+    <div class="navigation">
+        <ul class="menu">
+            <li class="menu-item"><h1>El marco filosófico del Humanismo</h1></li>
+            <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+            <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+            <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+            <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+        </ul>
     </div>
-    <h1>El marco filosófico del Humanismo</h1>
   </header>
   
   <main>
     <section>
-      <h2>Sobre el Humanismo</h2>
-      <p>El humanismo se centra en la <strong>dignidad humana</strong>, destacando el valor y el potencial del ser humano en todas sus capacidades.</p>
-      <p>Aboga en la <strong>razón</strong> y la <strong>libertad</strong> como pilares fundamentales para la <strong>autorrealización</strong> y el desarrollo de la <strong>individualidad</strong>.</p>
-      <p>El humanismo promueve la <strong>educación</strong> y la <strong>cultura</strong> como herramientas esenciales para alcanzar el <strong>progreso</strong> y fomentar la <strong>virtud cívica</strong> en la sociedad.</p>
-      <p>Desde el <strong>Renacimiento</strong> hasta la <strong>Ilustración</strong>, el humanismo ha sido una corriente que coloca al ser humano en el centro de la <strong>historia</strong> y el conocimiento, siguiendo un enfoque de <strong>antropocentrismo</strong>.</p>
-      <p>En el ámbito de la <strong>filosofía moral</strong>, promueve el <strong>libre pensamiento</strong>, el <strong>secularismo</strong>, y se nutre tanto del <strong>racionalismo</strong> como del <strong>empirismo</strong>, siempre buscando mejorar la <strong>humanidad</strong>.</p>
-      <p>Además, el humanismo fomenta la <strong>tolerancia</strong> y el respeto por las diferencias, apostando por un futuro de progreso y libertad individual.</p>
+      <br><br><h2>Sobre el Humanismo</h2>
+      <p>El Humanismo es una corriente filosófica que pone al ser humano como el centro de interés y estudio. Surgido durante el Renacimiento, el Humanismo aboga por el desarrollo integral del ser humano, resaltando la dignidad, el valor y el potencial de la persona.</p>
+      <p>Este enfoque se aleja de las interpretaciones religiosas del mundo para centrarse en el poder de la razón, el aprendizaje y la creatividad humana. El Humanismo influyó en el desarrollo del arte, la ciencia y la política durante el Renacimiento y sigue teniendo un impacto profundo en el pensamiento moderno.</p>
     </section>
 
     <section class="quotes">
@@ -153,7 +140,6 @@
         createGrid();
     </script>
     
-    <a href="#" class="cta-button">Ir al foro</a>
   </main>
 </body>
-</html>
+{% endblock %}

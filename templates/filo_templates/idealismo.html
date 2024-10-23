@@ -1,35 +1,24 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Idealismo</title>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
-</head>
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/styles_pro.css')}}">{% endblock %}
+{% block body %}
 <body>
   <header>
-    <button class="menu-button">≡</button>
-    <div class="menu-dropdown">
-      <ul>
-        <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
-        <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
-        <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
-        <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
-      </ul>
+    <div class="navigation">
+        <ul class="menu">
+            <li class="menu-item"><h1>El marco filosófico del Idealismo</h1></li>
+            <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+            <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+            <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+            <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+        </ul>
     </div>
-    <h1>El marco filosófico del Idealismo</h1>
   </header>
   
   <main>
     <section>
-      <h2>Sobre el Idealismo</h2>
-      <p>El Idealismo afirma que la realidad es esencialmente <b>mental</b> o <b>espiritual</b>.</p>
-      <p>Según los idealistas, el mundo tal como lo percibimos no existe independientemente de nuestra <b>mente</b>, sino que es una construcción de la consciencia.</p>
-      <p>Un visionario del idealismo internaliza que las <b>ideas</b>, los <b>pensamientos</b> y la <b>conciencia</b> son la base de toda realidad.</p>
-      <p>Se enfatiza la <b>imaginación</b>, el <b>pensamiento trascendental</b>, los valores espirituales, la <b>razón pura</b>, la <b>apercepción</b>, o aquello que se contempla con afán de conocer detalles fundamentales, son así herramientas para el significado de la existencia propia.</p>
+      <br><br><h2>Sobre el Idealismo</h2>
+      <p>El Idealismo es una corriente filosófica que afirma que la realidad es esencialmente mental o espiritual. Según los idealistas, el mundo tal como lo percibimos no existe independientemente de nuestras mentes, sino que es una construcción de la consciencia.</p>
+      <p>Filósofos clave del Idealismo incluyen a Immanuel Kant, quien desarrolló el idealismo trascendental, y Georg Wilhelm Friedrich Hegel, conocido por su concepto del idealismo absoluto.</p>
     </section>
 
     <section class="quotes">
@@ -151,7 +140,6 @@
         createGrid();
     </script>
     
-    <a href="#" class="cta-button">Ir al foro</a>
   </main>
 </body>
-</html>
+{% endblock %}

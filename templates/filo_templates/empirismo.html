@@ -1,38 +1,24 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Empirismo</title>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
-</head>
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/styles_pro.css')}}">{% endblock %}
+{% block body %}
 <body>
   <header>
-    <button class="menu-button">≡</button>
-    <div class="menu-dropdown">
-      <ul>
-        <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
-        <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
-        <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
-        <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
-      </ul>
+    <div class="navigation">
+        <ul class="menu">
+            <li class="menu-item"><h1>El marco filosófico del Empirismo</h1></li>
+            <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+            <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+            <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+            <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+        </ul>
     </div>
-    <h1>El marco filosófico del Empirismo</h1>
   </header>
   
   <main>
     <section>
-      <h2>Sobre el Racionalismo</h2>
-      <p>El empirismo sostiene que el <strong>conocimiento</strong> proviene principalmente de la <strong>experiencia</strong>, es decir, de la interacción directa con el mundo a través de los <strong>sentidos</strong>.</p>
-      <p>Según esta visión, somos como una <strong>tabula rasa</strong>, una hoja en blanco, en la cual las experiencias sensoriales dejan su huella mediante la <strong>percepción</strong> y la <strong>observación</strong> de la <strong>realidad</strong>.</p>
-      <p>Los empiristas confían en los <strong>datos</strong> recolectados a través de las <strong>impresiones</strong> sensoriales, las cuales se obtienen a través de la <strong>sensación</strong> y se procesan mediante la <strong>asociación de ideas</strong>.</p>
-      <p>Este enfoque utiliza la <strong>inducción</strong>, un método que parte de casos particulares para llegar a conclusiones generales sobre los <strong>fenómenos</strong> observados en el mundo.</p>
-      <p>La confianza en la <strong>evidencia</strong> empírica implica la necesidad de verificar los hechos a través de la <strong>observación</strong> y el <strong>experimento</strong>, lo que también lleva al empirista a adoptar un cierto <strong>escepticismo</strong> respecto a las ideas abstractas que no puedan ser verificadas en la <strong>realidad</strong>.</p>
-      <p>Esto genera una comprensión de las relaciones de <strong>causa y efecto</strong> basada en la repetición y el <strong>hábito</strong>, más que en la certeza absoluta.</p>
-      <p>Al estar basados en lo <strong>a posteriori</strong>, es decir, en el conocimiento que surge después de la experiencia, los empiristas se inclinan hacia el <strong>pragmatismo</strong> y el <strong>falsacionismo</strong>, donde la <strong>verificación</strong> o refutación de una idea se deriva de su aplicación en la práctica.</p>
+      <br><br><h2>Sobre el Empirismo</h2>
+      <p>El Empirismo es una corriente filosófica que sostiene que todo conocimiento proviene de la experiencia sensorial. Los empiristas argumentan que nuestras ideas y conceptos se basan en la observación del mundo externo y en las sensaciones que percibimos a través de nuestros sentidos.</p>
+      <p>Esta corriente filosófica se opone al Racionalismo, que afirma que el conocimiento puede ser adquirido a través del uso de la razón de manera independiente de la experiencia. El Empirismo fue una de las doctrinas clave durante la filosofía moderna.</p>
     </section>
 
     <section class="quotes">
@@ -153,7 +139,6 @@
         createGrid();
     </script>
     
-    <a href="#" class="cta-button">Ir al foro</a>
   </main>
 </body>
-</html>
+{% endblock %}

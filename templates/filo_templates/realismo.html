@@ -1,35 +1,24 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Realismo</title>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
-</head>
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/styles_pro.css')}}">{% endblock %}
+{% block body %}
 <body>
   <header>
-    <button class="menu-button">≡</button>
-    <div class="menu-dropdown">
-      <ul>
-        <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
-        <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
-        <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
-        <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
-      </ul>
+    <div class="navigation">
+        <ul class="menu">
+            <li class="menu-item"><h1>El marco filosófico del Realismo</h1></li>
+            <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+            <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+            <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+            <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+        </ul>
     </div>
-    <h1>El marco filosófico del Realismo</h1>
   </header>
   
   <main>
     <section>
-      <h2>Sobre el Realismo</h2>
-      <p>El Realismo sostiene que la <b>realidad</b> existe independientemente de nuestra percepción o conocimiento, el <b>mundo material</b> es <b>objetivo</b> y sus propiedades no dependen de la <b>mente humana</b>.</p>
-      <p>Una persona con una visión realista de la vida es alguien que enfrenta las situaciones tal como son, sin dejarse llevar por fantasías ni expectativas poco probables. </p>
-      <p>Sabe que la vida tiene desafíos y dificultades, y en lugar de ignorarlos o idealizarlos, los acepta y busca soluciones prácticas de acuerdo a la <b>naturaleza</b>.</p>
-      <p>Este enfoque filosófico contrasta con el idealismo, que sostiene que la realidad está ligada a las ideas o percepciones. </p>
+      <br><br><h2>Sobre el Realismo</h2>
+      <p>El Realismo filosófico es una corriente de pensamiento que sostiene que la realidad existe independientemente de nuestra percepción o conocimiento. Según el realismo, el mundo material es objetivo y sus propiedades no dependen de la mente humana.</p>
+      <p>Este enfoque filosófico contrasta con el idealismo, que sostiene que la realidad está ligada a las ideas o percepciones. El realismo puede dividirse en diferentes formas, como el realismo clásico, el realismo científico y el realismo moral.</p>
     </section>
 
     <section class="quotes">
@@ -151,7 +140,6 @@
         createGrid();
     </script>
     
-    <a href="#" class="cta-button">Ir al foro</a>
   </main>
 </body>
-</html>
+{% endblock %}

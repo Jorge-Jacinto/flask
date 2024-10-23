@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aristotelismo</title>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
-</head>
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/styles_pro.css')}}">{% endblock %}
+{% block body %}
 <body>
   <header>
     <div class="navigation">
@@ -24,18 +16,9 @@
   
   <main>
     <section>
-      <h2>Sobre el Aristotelismo</h2>
-      <p>El Aristotelismo se enfoca en que la realidad existe en las cosas mismas que podemos <b>observar</b> y estudiar, no en un reino separado de ideas perfectas como propone el Platonismo.</p>
-      <p>Elementos Clave:</p>
-      <ol>
-        <li>Sustancia y forma: Las cosas están compuestas por materia (sustancia) y forma, que son indivisibles en la realidad.</li>
-        <li><b>Causalidad</b>: Todo tiene una causa y un propósito (las cuatro causas aristotélicas).</li>
-        <li><b>Potencia</b> y <b>acto</b>: Las cosas tienen potencial para cambiar y actualizarse.</li>
-        <li><b>Lógica</b>: Aquello para entender el mundo.</li>
-        <li><b>Ética</b> práctica: La virtud o (<b>justicia</b> del <b>bien</b>) y la felicidad es el resultado obtenido a través de hábitos y acciones concretas.</li>
-      </ol>   
-      <p>Un perfil aristotélico tiende a observar el <b>mundo natural</b>, para entender la <b>sustancia</b> o aquella <b>materia</b> <b>tangible</b> de la existencia.</p>
-      <p>Busca la <b>experiencia directa</b>, de aquello que se puede hacer, y el <b>razonamiento lógico</b> del <b>conocimiento práctico</b> como un fin de vida.</p>
+      <br><br><h2>Sobre el Aristotelismo</h2>
+      <p>El Aristotelismo es una corriente filosófica que se basa en las enseñanzas de Aristóteles, uno de los filósofos más influyentes de la historia. Se enfoca en la lógica, la ética, la política, la biología y la metafísica. Aristóteles estableció el concepto de la "causa" y desarrolló un enfoque sistemático para comprender el mundo natural y social.</p>
+      <p>El Aristotelismo influyó profundamente en el pensamiento occidental, especialmente en la Edad Media, cuando sus ideas fueron adoptadas y adaptadas por filósofos y teólogos, como Tomás de Aquino.</p>
     </section>
 
     <section class="quotes">
@@ -154,8 +137,6 @@
         createGrid();
     </script>
     
-    <a href="{{ url_for('forum') }}" class="cta-button">Ir al foro</a>
-
   </main>
 </body>
-</html>
+{% endblock %}

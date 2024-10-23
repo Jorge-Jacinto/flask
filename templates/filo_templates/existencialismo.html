@@ -1,36 +1,23 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Existencialismo</title>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
-</head>
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/styles_pro.css')}}">{% endblock %}
+{% block body %}
 <body>
-  <header>
-    <button class="menu-button">≡</button>
-    <div class="menu-dropdown">
-      <ul>
-        <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
-        <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
-        <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
-        <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
-      </ul>
-    </div>
-    <h1>El marco filosófico del Existencialismo</h1>
-  </header>
-  
+    <header>
+        <div class="navigation">
+            <ul class="menu">
+                <li class="menu-item"><h1>El marco filosófico del Existencialismo</h1></li>
+                <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+                <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+                <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+                <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+            </ul>
+        </div>
+    </header>
   <main>
     <section>
-      <h2>Sobre el Existencialismo</h2>
-      <p>El existencialismo pone en el centro la <strong>existencia</strong> individual, afirmando que, a diferencia de otros seres, el ser humano no tiene una <strong>esencia</strong> predefinida; es a través de sus actos que cada persona crea su propia identidad.</p>
-      <p>Esta <strong>libertad</strong> radical para definirnos conlleva una profunda <strong>responsabilidad</strong> sobre nuestras decisiones, lo que a menudo genera <strong>angustia</strong>, pues cada elección es un acto libre y determinante para nuestro <strong>proyecto</strong> de vida.</p>
-      <p>Una persona con una tendencia existencialista vive en constante búsqueda de la <strong>autenticidad</strong>, enfrentando el <strong>absurdo</strong> de una existencia que no tiene un sentido intrínseco. En esta lucha, debe aceptar su propia <strong>facticidad</strong> y <strong>finitud</strong>, siendo consciente de la <strong>muerte</strong> como un límite inevitable.</p> 
-      <p>Enfrenta <strong>situaciones límite</strong> que revelan la fragilidad de la vida, y aunque vive en la <strong>contingencia</strong> del presente, busca trascender su <strong>temporalidad</strong> a través del compromiso y la <strong>elección</strong> libre y consciente.</p>
-      <p>Así mismo, asume su existencia con una mezcla de angustia y libertad, viendo la <strong>”náusea”</strong> o el enfrentamiento con la nada como parte de su condición. En su interacción con otros, la <strong>intersubjetividad</strong> le recuerda que aunque es libre, también está relacionado con las elecciones de los demás.</p>
+      <br><br><h2>Sobre el Existencialismo</h2>
+      <p>El Existencialismo es una corriente filosófica centrada en la libertad individual, la responsabilidad y la experiencia subjetiva del ser humano. Nació en el siglo XIX y alcanzó su auge en el siglo XX, especialmente en Europa, en respuesta a los tiempos de incertidumbre social y política.</p>
+      <p>El existencialismo sostiene que la vida carece de sentido inherente, y es el individuo quien debe crear su propio propósito. Temas como la angustia, el absurdo y la libertad son centrales en esta filosofía. Los pensadores existencialistas exploran las limitaciones de la condición humana y el desafío de vivir auténticamente.</p>
     </section>
 
     <section class="quotes">
@@ -152,7 +139,6 @@
         createGrid();
     </script>
     
-    <a href="#" class="cta-button">Ir al foro</a>
   </main>
 </body>
-</html>
+{% endblock %}

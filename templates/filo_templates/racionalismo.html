@@ -1,34 +1,24 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Racionalismo</title>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
-</head>
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/styles_pro.css')}}">{% endblock %}
+{% block body %}
 <body>
   <header>
-    <button class="menu-button">≡</button>
-    <div class="menu-dropdown">
-      <ul>
-        <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
-        <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
-        <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
-        <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
-      </ul>
+    <div class="navigation">
+        <ul class="menu">
+            <li class="menu-item"><h1>El marco filosófico del Racionalismo</h1></li>
+            <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+            <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+            <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+            <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+        </ul>
     </div>
-    <h1>El marco filosófico del Racionalismo</h1>
   </header>
   
   <main>
     <section>
-      <h2>Sobre el Racionalismo</h2>
-      <p>Una persona con una visión racionalista de la vida fundamenta su comprensión del mundo en la <strong>razón</strong> y la <strong>lógica</strong> como herramientas principales para alcanzar el <strong>conocimiento</strong> y la <strong>verdad</strong>. Este enfoque implica un uso constante del <strong>análisis</strong> y el <strong>pensar</strong> metódico, siguiendo un <strong>sistema</strong> que busca llegar a <strong>ideas claras y distintas</strong>, partiendo de <strong>principios fundamentales</strong> que se consideran evidentes por sí mismos, o <strong>axiomas</strong>.</p>
-      <p>Para el racionalista, el conocimiento se obtiene de manera <strong>deductiva</strong>, es decir, a partir de verdades <strong>a priori</strong> que no dependen de la experiencia, sino que se derivan de la pura <strong>mente</strong> y su capacidad de razonamiento. La <strong>deducción</strong> y la <strong>demostración</strong> rigurosa son esenciales para alcanzar la <strong>certeza</strong>, ya que se busca que las conclusiones sean necesarias y de <strong>universalidad</strong> incuestionable.</p>
-      <p>Aunque reconoce el papel de la <strong>intuición</strong>, especialmente en la comprensión inmediata de los primeros principios, el racionalista exige siempre una <strong>evidencia</strong> lógica y estructurada que garantice la coherencia interna del <strong>sistema</strong> de pensamiento, de modo que todo lo derivado de esos principios sea coherente y necesario, ajustándose a un <strong>método</strong> que asegura su validez.</p>
+      <br><br><h2>Sobre el Racionalismo</h2>
+      <p>El Racionalismo es una corriente filosófica que sostiene que el conocimiento se obtiene principalmente a través de la razón, y no tanto a través de los sentidos. Según los racionalistas, la razón es la herramienta más confiable para alcanzar la verdad, ya que puede acceder a principios universales y necesarios que no dependen de la experiencia.</p>
+      <p>Esta filosofía se opone al empirismo, que argumenta que el conocimiento proviene exclusivamente de la experiencia sensorial. El Racionalismo fue una de las corrientes predominantes en la filosofía moderna.</p>
     </section>
 
     <section class="quotes">
@@ -150,7 +140,6 @@
         createGrid();
     </script>
     
-    <a href="#" class="cta-button">Ir al foro</a>
   </main>
 </body>
-</html>
+{% endblock %}

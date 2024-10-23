@@ -1,36 +1,24 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Platonismo</title>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_pro.css') }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playlist+Script&family=Simonetta&display=swap" rel="stylesheet">
-</head>
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/styles_pro.css')}}">{% endblock %}
+{% block body %}
 <body>
   <header>
-    <button class="menu-button">≡</button>
-    <div class="menu-dropdown">
-      <ul>
-        <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
-        <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
-        <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
-        <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
-      </ul>
+    <div class="navigation">
+        <ul class="menu">
+            <li class="menu-item"><h1>El marco filosófico del Platonismo</h1></li>
+            <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+            <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+            <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+            <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+        </ul>
     </div>
-    <h1>El marco filosófico del Platonismo</h1>
   </header>
   
   <main>
     <section>
-      <h2>Sobre el Platonismo</h2>
-      <p>Fundada por el filósofo griego Platón en el siglo IV a.C., la <b>esencia</b> central del Platonismo es la existencia de <b>realidades</b> abstractas que denomina <b>”Mundo de las ideas”</b>.</p>
-      <p>Estas <b>formas</b> o <b>ideas</b>, son perfectas y eternas, las cuales son más reales que lo <b>físico</b> que vemos. Según Platón, todo lo que vemos de forma física, es tan solo una sombra de estas ideas.</p>
-      <p>Una persona con una visión platónica, busca constantemente la <b>perfección</b>, más allá de la <b>realidad</b> material, da una importancia trascendental del <b> alma</b>. </p>
-      <p>Pensamientos como el materialismo, hedonismo y nihilismo son temas de mucha crítica para una persona de pensamiento platónico, por la oposición de la idea central,</p>
-      <p>Sin embargo, también llegan a carecer de criterio tangible según la visión empírica, pues se fían de un panorama “subjetivo” de la realidad.</p>
+      <br><br><h2>Sobre el Platonismo</h2>
+      <p>El Platonismo es una escuela de pensamiento filosófico fundada por el filósofo griego Platón en el siglo IV a.C. La idea central del Platonismo es la existencia de un mundo ideal o "mundo de las ideas", donde residen las formas o esencias perfectas de todas las cosas.</p>
+      <p>Según Platón, el mundo material que percibimos a través de nuestros sentidos no es más que una copia imperfecta de este mundo ideal. Por lo tanto, el objetivo del filósofo es trascender el mundo material y acceder al conocimiento de las ideas o formas puras.</p>
     </section>
 
     <section class="quotes">
@@ -153,7 +141,6 @@
     </script>
     
     
-    <a href="#" class="cta-button">Ir al foro</a>
   </main>
 </body>
-</html>
+{% endblock %}
