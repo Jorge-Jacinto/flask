@@ -102,8 +102,9 @@ def login():
 
     return render_template('login.html')
 
-
-
+@app.route('/advice')
+def advice():
+    return render_template('advice.html')
 
 @app.route('/registerUser', methods=['GET', 'POST'])
 def registerUser():
@@ -345,6 +346,17 @@ def post_details(post_id):
 
     # Renderizar la plantilla con la publicación y los comentarios
     return render_template('post_details.html', post=post, comments=comments)
+
+@app.route('/modify_post/<post_id>', methods=['POST', 'GET'])
+def modify_post(post_id):
+    cursor = db.database.cursor()
+
+    # Obtener la publicación específica
+    cursor.execute('SELECT users.user, title, body, idPosts FROM posts JOIN users ON posts.idUsersP = users.idUsers WHERE posts.idPosts = %s', (post_id,))
+    post = cursor.fetchone()
+
+    # Renderizar la plantilla con la publicación y los comentarios
+    return render_template('modify_posts.html', post=post)
 
 @app.route('/add_comment/<post_id>', methods=['POST'])
 def add_comment(post_id):
