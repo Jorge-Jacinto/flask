@@ -87,6 +87,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin-right: 20px;
+    animation: transitionIn 0.75s;
 }
 
 .user-profile h1 {
@@ -120,6 +121,7 @@ body {
     background: #f7f7f7;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    animation: transitionIn 0.75s;
 }
 
 .user-posts h1 {
@@ -149,6 +151,11 @@ body {
 .post-card small {
     font-size: 0.8em;
     color: #ddd;
+}
+
+.post-link {
+    text-decoration: none;
+    color: inherit;
 }
 
 @keyframes transitionIn {

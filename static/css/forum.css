@@ -194,5 +194,5 @@ h1 {
 
 /* Margen en la parte superior para el contenido */
 .forum-container {
-    padding-top: 150px;  /* Espacio extra para evitar solapamiento con el header */
+    padding-top: 50px;  /* Espacio extra para evitar solapamiento con el header */
 }

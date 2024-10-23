@@ -1,5 +1,7 @@
 body {
-    background-color: #f5f5dc; /* Fondo beige */
+    background: url('../images/background_register.png') no-repeat;
+    background-size: cover;
+    background-position: center;
     font-family: Arial, sans-serif;
     color: #333;
     margin: 0;
