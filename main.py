@@ -403,7 +403,7 @@ def inicio():
 
     # Consulta de las últimas publicaciones del usuario
     sql_posts = '''
-        SELECT title, body, date, nlp_result 
+        SELECT idPosts, title, body, date, nlp_result 
         FROM posts 
         WHERE idUsersP = (%s)
         ORDER BY date DESC 
