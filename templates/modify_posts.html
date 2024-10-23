@@ -1,0 +1,25 @@
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/modify_posts.css')}}">{% endblock %}
+{% block body %}
+    <header>
+        <div class="navigation">
+            <ul class="menu">
+                <li class="menu-item"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+                <li class="menu-item"><a href="{{ url_for('escuelas_filo') }}">Escuelas Filosóficas</a></li>
+                <li class="menu-item"><a href="{{ url_for('forum') }}">Foro</a></li>
+                <li class="menu-item"><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Formulario para agregar un comentario -->
+    <div class="forum-container">
+        <div class="add-post">
+            <form action="{{ url_for('modify_post', post_id=post[4]) }}" method="POST">
+                <textarea name="title" class="title" rows="4" value="{%print(post[1])%}"></textarea><br>
+                <textarea name="body" rows="4" placeholder="Escribe lo que piensas aquí..." value="post[2]"></textarea><br>
+                <button type="submit" class="submit-comment">Editar</button>
+            </form>
+        </div>
+    </div>       
+{% endblock %}

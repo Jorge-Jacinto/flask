@@ -1,0 +1,15 @@
+{% extends './layout.html' %}
+{% block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/advice.css')}}">{% endblock %}
+{% block body %}
+
+<h2>Nos complace tenerte con nosotros, pero antes de poder conectarte con otros usuarios necesitamos que nos ayudes con algo.</h2>
+<h3>Para poder otorgarte una experiencia única, queremos conocerte mejor. </h3>
+<h4>A continuacion, tendrás que contestar 10 preguntas únicas, cada pregunta estará divida por 3 secciones con 3 preguntas que tendrás que contestar de la forma más honesta posible.</h4>
+<h4>Al finalzar las 3 secciones, se abrirá una última sección con las respuestas anteriormene seleccionadas, tendrás que elegir solo una de las 3 respuestas así que, elige con cuidado.</h4>
+<h4>Una vez termines de contestar las 10 preguntas, tu perfil será clasificado en una de las 12 escuelas Filosóficas que tenemos.</h4>
+
+<div class="start_button" style="padding-top: 20px;">
+    <button class="btn" onclick="window.location.href='register1'">¡Estoy Listo!</button><br><br>
+    <button class="btn" onclick="window.location.href='/'">Hacerlo más tarde</button>
+</div>
+{% endblock %}

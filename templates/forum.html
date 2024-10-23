@@ -12,6 +12,7 @@
         </div>
     </header>
     <div class="forum-container">
+        <img src="{{ url_for('static', filename='images/logo.png')}}" alt="">
         <a href="{{ url_for('add_post') }}" class="post-add" >Crear una nueva publicación</a>
         <ul>
         {% for post in posts %}

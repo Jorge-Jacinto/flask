@@ -14,7 +14,7 @@
             </ul>
         </div>
     </header>
-
+    <img src="{{ url_for('static', filename='images/logo.png')}}" alt=""><br>
     <section style="padding-top: 100px; display: flex; justify-content: space-between; padding: 0 100px;">
         <!-- Sección del perfil del usuario -->
         <div class="user-profile">
@@ -32,12 +32,14 @@
             <h1>Tus Últimas Publicaciones</h1>
             <ul style="list-style-type: none; padding: 0;">
             {% for post in user_posts %}
-                <li class="post-card">
-                    <h3>{{ post[0] }}</h3>
-                    <p>{{ post[1] }}</p>
-                    <p>{{ post[3] }}</p>
-                    <small>Publicado el {{ post[2] }}</small>
-                </li>
+                <a href="{{ url_for('modify_post', post_id=post[0]) }}" class="post-link">
+                    <li class="post-card">
+                        <h3>{{ post[1] }}</h3>
+                        <p>{{ post[2] }}</p>
+                        <p>{{ post[4] }}</p>
+                        <small>Publicado el {{ post[3] }}</small>
+                    </li>
+                </a>
             {% else %}
                 <p>No has realizado publicaciones aún.</p>
             {% endfor %}
