@@ -52,7 +52,7 @@ def login():
 
         try:
            cursor = db.database.cursor()
-        except db.connector.errors.OperationalError:
+        except mysql.connector.errors.OperationalError:
            db.database.reconnect(attempts=3, delay=5)  # Intenta reconectar 3 veces con 5 segundos de intervalo
            cursor = db.database.cursor()
 
