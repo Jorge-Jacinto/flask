@@ -8,6 +8,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import accuracy_score
 from collections import Counter
 import datetime
+import mysql.connector
 from models.knn_model import KNNManual
 
 data = pd.read_csv('dataset.csv')
@@ -51,7 +52,7 @@ def login():
 
         try:
            cursor = db.database.cursor()
-        except mysql.connector.errors.OperationalError:
+        except db.connector.errors.OperationalError:
            db.database.reconnect(attempts=3, delay=5)  # Intenta reconectar 3 veces con 5 segundos de intervalo
            cursor = db.database.cursor()
 
