@@ -9,6 +9,7 @@ from sklearn.metrics import accuracy_score
 from collections import Counter
 import datetime
 import mysql.connector
+import os
 from models.knn_model import KNNManual
 
 data = pd.read_csv('dataset.csv')
@@ -26,7 +27,7 @@ knn_manual = KNNManual(k=k)
 knn_manual.fit(X_train.values, y_train)
 
 app = Flask(__name__)
-app.secret_key = 'my_secret'
+app.secret_key = os.environ.get('SECRET_KEY', 'default_secret_key')
 register_list = []
 values = {}
 
