@@ -360,6 +360,31 @@ def modify_post(post_id):
     # Renderizar la plantilla con la publicación y los comentarios
     return render_template('modify_posts.html', post=post)
 
+@app.route('/edit_post/<post_id>', methods=['POST', 'GET'])
+def edit_post(post_id):
+    cursor = db.database.cursor()
+
+    # Obtener la publicación específica
+    cursor.execute('SELECT users.user, title, body, idPosts FROM posts JOIN users ON posts.idUsersP = users.idUsers WHERE posts.idPosts = %s', (post_id,))
+    post = cursor.fetchone()
+    if request.method == 'POST':
+        title = request.form['title']
+        body = request.form['body']
+        cursor.execute('UPDATE posts SET title = %s, body = %s where idPosts = %s' , (title, body, post_id,))
+        db.database.commit()
+        return redirect(url_for('forum'))
+    # Renderizar la plantilla con la publicación 
+    return render_template('edit_post.html', post=post)
+
+@app.route('/delete_post/<post_id>', methods=['POST', 'GET'])
+def delete_post(post_id):
+    cursor = db.database.cursor()
+
+    # Obtener la publicación específica
+    cursor.execute('DELETE FROM posts WHERE idPosts = %s', (post_id,))
+    db.database.commit()
+    return redirect(url_for('inicio'))
+
 @app.route('/add_comment/<post_id>', methods=['POST'])
 def add_comment(post_id):
     # Verificar si el usuario ha iniciado sesión
