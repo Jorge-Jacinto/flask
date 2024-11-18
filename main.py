@@ -380,9 +380,15 @@ def edit_post(post_id):
 def delete_post(post_id):
     cursor = db.database.cursor()
 
-    # Obtener la publicación específica
+    # Primero, eliminar los comentarios asociados con el post
+    cursor.execute('DELETE FROM comments WHERE idPostsc = %s', (post_id,))
+
+    # Luego, eliminar la publicación
     cursor.execute('DELETE FROM posts WHERE idPosts = %s', (post_id,))
+
+    # Confirmar los cambios en la base de datos
     db.database.commit()
+
     return redirect(url_for('inicio'))
 
 @app.route('/add_comment/<post_id>', methods=['POST'])
