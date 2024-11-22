@@ -19,8 +19,8 @@
             <h2>{{ post[1] }}</h2>
             <p>{{ post[2] }}</p>
             <p>Este comentario es: {{post[4]}}</p>
-            <small>Publicado por {{ post[0] }} el {{ post[3] }}</small>
-        </div>
+            <small>Publicado por {{ post[0] }} el {{ post[5] }}</small>
+         </div>
         <div class="edit-post">
             <form action="{{ url_for('edit_post', post_id=post[3])}}" method="POST">
                 <h3>Edita tu publicación</h3><br>
