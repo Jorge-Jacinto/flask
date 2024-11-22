@@ -356,7 +356,8 @@ def modify_post(post_id):
     cursor = db.database.cursor()
 
     # Obtener la publicación específica
-    cursor.execute('SELECT users.user1, title, body, idPosts, filo_school, date FROM posts JOIN users ON posts.idUsersP = users.idUsers WHERE posts.idPosts = %s', (post_id,))    post = cursor.fetchone()
+    cursor.execute('SELECT users.user1, title, body, idPosts, filo_school, date FROM posts JOIN users ON posts.idUsersP = users.idUsers WHERE posts.idPosts = %s', (post_id,))  
+    post = cursor.fetchone()
 
     # Renderizar la plantilla con la publicación y los comentarios
     return render_template('modify_posts.html', post=post)
