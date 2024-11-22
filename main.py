@@ -265,6 +265,8 @@ def clasificar():
     
     cursor = db.database.cursor()
     id_usuario = session.get('idUser')  # Obtener el 'id_usuario' de la sesión
+    if np.isnan(prediccion_original):
+        prediccion_original = 'Estoicismo'
     
     sql2 = "UPDATE indexes SET class = %s WHERE idUsers = %s"
     data2 = (prediccion_original, id_usuario)
