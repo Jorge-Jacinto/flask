@@ -127,7 +127,7 @@ def registerUser():
 
     cursor.close()
 
-    return redirect(url_for('register1'))
+    return redirect(url_for('advice'))
  
 @app.route('/register1', methods=['GET', 'POST'])
 def register1():
