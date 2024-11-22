@@ -367,7 +367,7 @@ def edit_post(post_id):
     cursor = db.database.cursor()
 
     # Obtener la publicación específica
-    cursor.execute('SELECT users.user1, title, body, idPosts FROM posts JOIN users ON posts.idUsersP = users.idUsers WHERE posts.idPosts = %s', (post_id,))
+    cursor.execute('SELECT users.user1, title, body, idPosts, filo_school, date FROM posts JOIN users ON posts.idUsersP = users.idUsers WHERE posts.idPosts = %s', (post_id,))  
     post = cursor.fetchone()
     if request.method == 'POST':
         title = request.form['title']
