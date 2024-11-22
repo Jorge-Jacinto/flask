@@ -19,7 +19,7 @@
             <h2>{{ post[1] }}</h2>
             <p>{{ post[2] }}</p>
             <p>Este comentario es: {{post[4]}}</p>
-            <small>Publicado por {{ post[0] }} el {{ post[3] }}</small>
+            <small>Publicado por {{ post[0] }} el {{ post[5] }}</small>
         </div>
         <div class="buttons">
             <a href="{{ url_for('edit_post', post_id=post[3]) }}" class="edit">Editar</a>
