@@ -96,7 +96,7 @@ def login():
                     return redirect(url_for('forum'))
                 else:
                     # Si no hay un registro, redirige a la página de registro 1
-                    return redirect(url_for('register1'))
+                    return redirect(url_for('advice'))
             else:
                 cursor.close()  # Cierra el cursor
                 flash('¡Datos Incorrectos!')
